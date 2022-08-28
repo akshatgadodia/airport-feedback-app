@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Stylesheets/NavigationBar.css'
 
 const NavigationBar = () => {
   return (

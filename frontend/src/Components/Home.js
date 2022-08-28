@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Stylesheets/Home.css'
 
 const Home = () => {
   return (
