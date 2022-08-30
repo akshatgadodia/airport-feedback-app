@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
-const DB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}
-            @cluster0.3v0mjk6.mongodb.net/?retryWrites=true&w=majority`
+const DB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.3v0mjk6.mongodb.net/?retryWrites=true&w=majority`;
 
 mongoose.connect(DB)
     .then(()=>{
