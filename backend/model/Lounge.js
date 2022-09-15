@@ -11,4 +11,4 @@ const loungeFeedbackSchema = new Schema({
     feedbackMessage : {type : String, required : true},
 });
 
-module.exports = new mongoose.model("loungefeedback",checkInFeedbackSchema);
+module.exports = new mongoose.model("loungefeedback",loungeFeedbackSchema);
