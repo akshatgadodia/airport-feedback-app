@@ -3,7 +3,11 @@ import './Stylesheets/Home.css'
 
 const Home = () => {
   var l=[{"1":"2"},{"2":"3"},{"3":"4"}]
-  var z=["1","2","3"]
+
+  const handleForm = event=> {
+    event.preventDefault();
+  }
+
   return (
     <div className='home'>
       {l.map((key)=>{
@@ -11,7 +15,7 @@ const Home = () => {
         let x=Object.entries(key)[0]
         return (<p key={x[0]} value={x[0]} onClick={(e)=>{console.log(e.target)}}>{x[1]}</p>)
       })}
-      <form>
+      <form onSubmit={handleForm}>
         <h1>Login</h1>
         <span><label>Name: <input type="text"/></label></span>
         <span><label>Email: <input type="text"/></label></span>
