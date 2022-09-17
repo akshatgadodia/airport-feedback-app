@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.home{
+    background:url("../../Images/airplaneimage1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    max-width:100%;
+    max-height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    min-width: 300px;
+    min-height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 5px 8px 5px rgba(255,255,255,0.2);
+    border-radius: 15px;
+    align-items: center;
+    padding: 15px;
+}
+form h1{
+    color: white;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+form input{
+    height: 25px;
+    margin-top: 20px;
+    width: 150px;
+    background-color: transparent;
+    border: none;
+    outline:none;
+    border-bottom:1px solid white;
+}
+input:hover{
+    outline: none;
+    border: none;
+    border-bottom:1px solid white;
+}
+form label{
+    font-size: 20px;
+    color: white;
+    /* align-self: flex-start; */
+    text-align: center !important;
+}
+form input[type="submit"]
+{
+    width: 100px;
+    height: 40px;
+    padding: 5px 10px;
+    color: white;
+    background-color: #4A88BA;
+    font-size: 18px;
+    margin: 20px 0px 10px 0px;
+}
