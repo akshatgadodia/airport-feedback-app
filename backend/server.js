@@ -23,14 +23,14 @@ app.use((req,res,next) => {
     next()
 })
 
-//app.use('/api/airline',airlineRoutes)
-//app.use('/api/checkin',checkInRoutes)
-//app.use('/api/foodcourt',foodCourtRoutes)
-//app.use('/api/helpdesk',helpDeskRoutes)
-//app.use('/api/lounge',loungeRoutes)
-//app.use('/api/store',storeRoutes)
-//app.use('/api/user',userRoutes)
-//app.use('/api/washroom',washroomRoutes)
+app.use('/api/airline',airlineRoutes)
+app.use('/api/checkin',checkInRoutes)
+app.use('/api/foodcourt',foodCourtRoutes)
+app.use('/api/helpdesk',helpDeskRoutes)
+app.use('/api/lounge',loungeRoutes)
+app.use('/api/store',storeRoutes)
+app.use('/api/user',userRoutes)
+app.use('/api/washroom',washroomRoutes)
 
 
 app.listen(port,() => {
