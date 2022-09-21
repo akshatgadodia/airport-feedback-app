@@ -1,0 +1,22 @@
+.navbar{
+    background-color: #2B3A56;
+    height: 40px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar .fa-plane-departure{
+    font-size: 20px;
+    color: white;
+}
+.navbar button{
+    background-color: transparent;
+    font-size: 20px;
+    color: white;
+    border: none;
+    outline: none;
+}
+.navbar button:hover{
+    color:rgb(88, 88, 251);
+}

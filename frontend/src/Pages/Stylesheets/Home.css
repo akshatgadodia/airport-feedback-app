@@ -4,61 +4,49 @@
     box-sizing: border-box;
 }
 .home{
-    background:url("../../Images/airplaneimage1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    /* background: url("../../Images/pexels-martin-dickson-2366581.jpg"); */
     width: 100vw;
     height: 100vh;
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
+    justify-content: space-between;
+    padding-bottom: 15px;
+    position: absolute;
+
+    /* background-color: aqua; */
+    /* padding: 20px; */
+    /* flex-direction: column; */
+    /* background-size: 100%; */
+    /* background-position: top center; */
+    /* transform: skewX(-10deg); */
+    /* clip-path: circle(30%); */
 }
-form{
-    min-width: 300px;
-    min-height: 300px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px 5px 8px 5px rgba(255,255,255,0.2);
-    border-radius: 15px;
-    align-items: center;
-    padding: 15px;
+.home img{
+    /* background: url("../../Images/pexels-martin-dickson-2366581.jpg"); */
+    /* background-position: top center; */
+    /* transform: skewX(10deg); */
+    /* clip-path: polygon(0% 50%,50% 0%,100% 50%,50% 100%); */
+    /* width: 200px; */
+    /* object-position: bottom center; */
+    /* transform: rotate(-45deg); */
+    position: relative;
+    flex: 6;
+    height: 90%;
+    background-color: blue;
+    top: 0% !important;
+    /* bottom: 20px!important; */
 }
-form h1{
-    color: white;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-form input{
-    height: 25px;
-    margin-top: 20px;
-    width: 150px;
-    background-color: transparent;
-    border: none;
-    outline:none;
-    border-bottom:1px solid white;
-}
-input:hover{
-    outline: none;
-    border: none;
-    border-bottom:1px solid white;
-}
-form label{
-    font-size: 20px;
-    color: white;
-    /* align-self: flex-start; */
-    text-align: center !important;
-}
-form input[type="submit"]
-{
-    width: 100px;
-    height: 40px;
-    padding: 5px 10px;
-    color: white;
-    background-color: #4A88BA;
-    font-size: 18px;
-    margin: 20px 0px 10px 0px;
+.home h1{
+    font-size: 60px;
+    flex: 4;
+    white-space: no-wrap;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 160px;
+    color: #2B3A56;
+    margin-right: 100px;
+    /* background-color: bisque; */
 }
