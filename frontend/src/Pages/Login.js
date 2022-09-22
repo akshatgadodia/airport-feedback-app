@@ -12,8 +12,9 @@ const Login= () => {
   }
   const handleForm = async(event)=> {
     event.preventDefault();
-    const data=await axios.post("/user",state)
+    const data = await axios.post("/user",state)
     console.log(data);
+
     if(data.status===201)
     {
       alert("Successfully registered")
@@ -23,7 +24,7 @@ const Login= () => {
       navigate("/home")
     }
     else{
-      alert("Some Error Occured.Retry")
+      alert("Some Error Occured. Retry")
     }
   }
 
