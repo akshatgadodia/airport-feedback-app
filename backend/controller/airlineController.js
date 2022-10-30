@@ -1,27 +1,22 @@
 const mongoose = require('mongoose')
+const asyncHandler = require('../middleware/asyncHandler')
 
 const Airline = require('../model/Airline')
 
-const saveAirlineFeedback = async (req,res)=> {
-    try{
+const saveAirlineFeedback = asyncHandler(async (req, res, next)=> {
     const airline = await new Airline(req.body).save()
-    res.status(201).json(airline)
-    }
-    catch(err)
-    {
-        res.status(401).send("Invalid Credentials")
-    }
-}
+    res.status(201).json({
+        success : true,
+        data : airline
+    })
+});
 
-const getAirlineFeedback = async (req,res)=> {
-    try{
+const getAirlineFeedback = asyncHandler(async (req, res, next)=> {
     const airlines = await Airline.find({})
-    return res.status(200).json(airlines)
-    }
-    catch(err)
-    {
-        res.status(404).send("Not Found")
-    }
-}
+    return res.status(200).json({
+        success : true,
+        data : airline
+    })
+});
 
 module.exports = {saveAirlineFeedback,getAirlineFeedback}

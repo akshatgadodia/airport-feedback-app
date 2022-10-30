@@ -1,27 +1,22 @@
 const mongoose = require('mongoose')
+const asyncHandler = require('../middleware/asyncHandler')
 
 const Lounge = require('../model/Lounge')
 
-const saveLoungeFeedback = async (req,res)=> {
-    try{
-    const FoodCourt = await new Lounge(req.body).save()
-    res.status(201).json(FoodCourt)
-    }
-    catch(err)
-    {
-        res.status(401).json("Invalid Credentials")
-    }
-}
+const saveLoungeFeedback = asyncHandler(async (req, res, next)=> {
+    const lounge = await new Lounge(req.body).save()
+    res.status(201).json({
+        success : true,
+        data : lounge
+    })
+});
 
-const getLoungeFeedbacks = async (req,res)=> {
-    try{
-    const users = await Lounge.find({})
-    return res.status(200).json(users)
-    }
-    catch(err)
-    {
-        res.status(404).json("Not found")
-    }
-}
+const getLoungeFeedbacks = asyncHandler(async (req, res, next)=> {
+    const lounges = await Lounge.find({})
+    return res.status(200).json({
+        success : true,
+        data : lounges
+    })
+});
 
 module.exports = {saveLoungeFeedback,getLoungeFeedbacks}

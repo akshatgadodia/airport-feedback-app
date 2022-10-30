@@ -1,27 +1,22 @@
 const mongoose = require('mongoose')
+const asyncHandler = require('../middleware/asyncHandler')
 
 const Store = require('../model/Store')
 
-const saveStoreFeedback = async (req,res)=> {
-    try{
-    const FoodCourt = await new Store(req.body).save()
-    res.status(201).json(FoodCourt)
-    }
-    catch(err)
-    {
-        res.status(401).json("Invalid Credentials")
-    }
-}
+const saveStoreFeedback = asyncHandler(async (req, res, next)=> {
+    const store = await new Store(req.body).save()
+    res.status(201).json({
+        success : true,
+        data : store
+    })
+});
 
-const getStoreFeedbacks = async (req,res)=> {
-    try{
-    const users = await Store.find({})
-    res.status(200).json(users)
-    }
-    catch(err)
-    {
-        res.status(404).json("Not Found")
-    }
-}
+const getStoreFeedbacks = asyncHandler(async (req, res, next)=> {
+    const stores = await Store.find({})
+    res.status(200).json({
+        success : true,
+        data : stores
+    })
+});
 
 module.exports = {saveStoreFeedback,getStoreFeedbacks}

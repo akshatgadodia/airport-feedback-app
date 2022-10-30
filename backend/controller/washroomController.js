@@ -1,27 +1,23 @@
 const mongoose = require('mongoose')
+const asyncHandler = require('../middleware/asyncHandler')
 
 const Washroom = require('../model/Washroom')
 
-const saveWashroomFeedback = async (req,res)=> {
-    try{
-    const FoodCourt = await new Washroom(req.body).save()
-    res.status(201).json(FoodCourt)
-    }
-    catch(err)
-    {
-        res.status(401).json("Invalid Credentials")
-    }
-}
+const saveWashroomFeedback = asyncHandler(async (req, res, next)=> {
+    const washroom = await new Washroom(req.body).save()
+    res.status(201).json({
+        success : true,
+        data : washroom
+    })
 
-const getWashroomFeedbacks = async (req,res)=> {
-    try{
-    const users = await Washroom.find({})
-    res.status(200).json(users)
-    }
-    catch(err)
-    {
-        res.status(404).json("Not Found")
-    }
-}
+});
+
+const getWashroomFeedbacks = asyncHandler(async (req, res, next)=> {
+    const washroom = await Washroom.find({})
+    res.status(200).json({
+        success : true,
+        data : washroom
+    })
+});
 
 module.exports = {saveWashroomFeedback,getWashroomFeedbacks}

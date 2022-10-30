@@ -1,28 +1,22 @@
 const mongoose = require('mongoose')
+const asyncHandler = require('../middleware/asyncHandler')
 
 const HelpDesk = require('../model/HelpDesk')
 
-const saveHelpDeskFeedback = async (req,res)=> {
-    try{
-    const FoodCourt = await new HelpDesk(req.body).save()
-    res.status(201).json(FoodCourt)
-    }
-    catch(err)
-    {
-        res.status(401).json("Invalid Credentials")
-    }
-}
+const saveHelpDeskFeedback = asyncHandler(async (req, res, next)=> {
+    const helpDesk = await new HelpDesk(req.body).save()
+    res.status(201).json({
+        success : true,
+        data : helpDesk
+    })
+});
 
-const getHelpDeskFeedbacks = async (req,res)=> {
-    try{
-    const users = await HelpDesk.find({})
-    return res.status(200).json(users)
-    }
-    catch(err)
-    {
-        res.status(404).json("Not Found")
-    }
-
-}
+const getHelpDeskFeedbacks = asyncHandler(async (req, res, next)=> {
+    const helpDesks = await HelpDesk.find({})
+    return res.status(200).json({
+        success : true,
+        data : helpDesks
+    })
+});
 
 module.exports = {saveHelpDeskFeedback,getHelpDeskFeedbacks}
