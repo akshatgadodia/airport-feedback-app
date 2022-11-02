@@ -50,7 +50,7 @@ app.use('/api/stores',storesRoutes)
 // Error Handler
 app.use(errorHandler)
 
-
 app.listen(port,() => {
     console.log(`Listening on port ${port}`);
 })
+

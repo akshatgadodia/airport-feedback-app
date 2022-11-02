@@ -11,7 +11,7 @@ import { useHttpClient } from '../hooks/useHttpClient';
 
 //http://localhost:3000/feedback/food/1
 const FeedbackPage = () => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const {feedbackType,question} = useParams();
     const navigate = useNavigate();
     const data = FormsData[feedbackType][question]
@@ -39,13 +39,15 @@ const FeedbackPage = () => {
         }
         else{
             try {
-              const data = await sendRequest(
+              await sendRequest(
                 `/${feedbackType}/`,
                 'POST',
-                state,
+                JSON.stringify(state),
+                {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                }
               )
-              console.log(data);
-              console.log(error)
               alert("Feedback submitted successfully!! Thank you for your Feedback")
             } catch (err) {}
             //navigate(`/feedback/`)

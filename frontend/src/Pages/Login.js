@@ -4,35 +4,47 @@ import {useNavigate} from "react-router-dom"
 import axios from "axios"
 import {Context} from "../App"
 import TitleLetterDisplay from './../Components/TitleLetterDisplay';
-const Login= () => {
 
-  const [state,setState]=useState()
+import ErrorModal from '../Components/ErrorModal';
+import { useHttpClient } from '../hooks/useHttpClient';
+const Login= () => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [details,setdetails] = useState()
   const navigate=useNavigate()
   const {dispatch}=useContext(Context)
 
   const userdetails=(e)=>{
-    setState({...state,[e.target.id]:e.target.value})
+    setdetails({...details,[e.target.id]:e.target.value})
   }
 
   const handleForm = async(event)=> {
     event.preventDefault();
-    const data = await axios.post("/user",state)
-    console.log(data);
-    if(data.status===201)
-    {
-      alert("Successfully registered")
-      dispatch({
-        type:"Login"
-      })
-      navigate("/home")
-    }
-    else{
-      alert("Some Error Occured. Retry")
-    }
+    try {
+      //console.log(details)
+      const data = await sendRequest(
+        "/user",
+        'POST',
+        JSON.stringify(details),
+        {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      )
+      if(!error)
+      {
+        alert("Successfully registered")
+        dispatch({
+          type:"Login",
+          payload : {type:"user", flightNumber:data.data.flightNumber, gate:data.data.gate}
+        })
+        navigate("/home")
+      }
+    } catch (err) {}
   }
 
   return (
     <div className='login'>
+    <ErrorModal error={error} onClear={clearError} />
       <div className='login-inside-border'>
         <div className='login-form-div'>
         <div className='login-head'> 
@@ -55,7 +67,7 @@ const Login= () => {
           <input type="text" id="name" placeholder="Name" onChange={(e)=>userdetails(e)}/>
           <input type="text" id="email" placeholder="E-Mail" onChange={(e)=>userdetails(e)}/>
           <input type="text" id="mobileNumber" placeholder="Mobile Number" onChange={(e)=>userdetails(e)}/>
-          <input type="text" id="pnr" placeholder="PNR" onChange={(e)=>userdetails(e)}/>
+          <input type="number" id="pnr" placeholder="PNR" onChange={(e)=>userdetails(e)}/>
           <input type="submit" value="Submit" className='login-form-submit'/>
         </form>
         </div>

@@ -11,7 +11,6 @@ export const useHttpClient = () => {
       setIsLoading(true);
       const httpAbortCtrl = new AbortController();
       activeHttpRequests.current.push(httpAbortCtrl);
-
       try {
         const response = await fetch(url, {
           method,
@@ -19,18 +18,17 @@ export const useHttpClient = () => {
           headers,
           signal: httpAbortCtrl.signal
         });
-
         const responseData = await response.json();
         activeHttpRequests.current = activeHttpRequests.current.filter(
           reqCtrl => reqCtrl !== httpAbortCtrl
         );
-
         if (!responseData.success) {
           throw new Error(responseData.error);
         }
         setIsLoading(false);
         return responseData;
       } catch (err) {
+        console.log(err)
         setError(err.message);
         setIsLoading(false);
         throw err;
