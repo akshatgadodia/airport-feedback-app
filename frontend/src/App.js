@@ -6,7 +6,7 @@ import Home from "./Pages/Home";
 import NavigationBar from "./Components/NavigationBar";
 import Feedback from "./Pages/Feedback" 
 import FeedbackPage from "./Pages/FeedbackPage";
-import {reducer,initialState} from "./Pages/reducer"
+import {reducer,initialState} from "./utils/Reducer"
 import { useReducer } from "react";
 
 export const Context=React.createContext()

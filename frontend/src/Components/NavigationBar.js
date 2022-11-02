@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import './Stylesheets/NavigationBar.css'
+import './stylesheets/NavigationBar.css'
 import {Context} from "../App"
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'

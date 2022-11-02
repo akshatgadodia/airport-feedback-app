@@ -1,5 +1,5 @@
 const FormData = {
-    food : {
+    foodcourt : {
         1 : {'q':"Service", 'next':2,"ref":"service"},
         2 : {'q':"Staff" , 'next':3, "ref":"staff"},
         3 : {'q':"FoodQuality", 'next':4, "ref":"foodQuality"},
@@ -44,6 +44,9 @@ const FormData = {
         6 : {'q':"valueForMoney", 'next':7,"ref":"valueForMoney"},
         7 : {'q':"productQuality" , 'next':8,"ref":"productQuality"},
         8 : {'q':"feedbackMessage","ref":"feedbackMessage"}
+    },
+    washroom : {
+        
     }
 }
 

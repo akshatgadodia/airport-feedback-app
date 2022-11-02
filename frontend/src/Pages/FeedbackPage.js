@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import {useParams,useNavigate} from "react-router-dom";
-import FormsData from '../Data/FormData'
+import FormsData from '../data/FormData'
 import FeedbackQuestions from './../Components/FeedbackQuestions';
 import axios from 'axios'
-import "./Stylesheets/Feedbackpage.css"
+import "./stylesheets/Feedbackpage.css"
+import ErrorModal from '../Components/ErrorModal';
 import { Rating } from 'react-simple-star-rating'
+
+import { useHttpClient } from '../hooks/useHttpClient';
+
 //http://localhost:3000/feedback/food/1
 const FeedbackPage = () => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const {feedbackType,question} = useParams();
     const navigate = useNavigate();
     const data = FormsData[feedbackType][question]
@@ -33,21 +38,23 @@ const FeedbackPage = () => {
             }
         }
         else{
-            try{
-              const data=await axios.post("/foodcourt",state)
+            try {
+              const data = await sendRequest(
+                `/${feedbackType}/`,
+                'POST',
+                state,
+              )
               console.log(data);
+              console.log(error)
               alert("Feedback submitted successfully!! Thank you for your Feedback")
-            }
-            catch(err){
-                console.log(err);
-                alert("Error! Try Again Later")
-            }
-            navigate(`/feedback/`)
+            } catch (err) {}
+            //navigate(`/feedback/`)
         }
     }
 
   return (
     <div className='feedbackdiv'>
+      <ErrorModal error={error} onClear={clearError} />
       <h1>{feedbackType.toUpperCase()}</h1>
       <div className='Qdiv'>
         <div>

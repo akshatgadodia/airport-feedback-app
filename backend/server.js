@@ -14,7 +14,9 @@ const loungeRoutes = require('./routes/loungeRoute')
 const storeRoutes = require('./routes/storeRoute')
 const userRoutes = require('./routes/userRoute')
 const washroomRoutes = require('./routes/washroomRoute');
-
+const airlinesRoutes = require('./routes/airlinesRoute')
+const storesRoutes = require('./routes/storesRoute')
+const loungesRoutes = require('./routes/loungesRoute')
 
 connectDb();
 
@@ -40,6 +42,10 @@ app.use('/api/lounge',loungeRoutes)
 app.use('/api/store',storeRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/washroom',washroomRoutes)
+app.use('/api/airlines',airlinesRoutes)
+app.use('/api/lounges',loungesRoutes)
+app.use('/api/stores',storesRoutes)
+
 
 // Error Handler
 app.use(errorHandler)
