@@ -20,7 +20,7 @@ const FeedbackPage = () => {
       if(data.ratingType==="dropdown"){
         console.log("Fetch Data From Backend")
       }
-    }),[])
+    },[])
 
     useEffect(()=>{
       setRating(0)
