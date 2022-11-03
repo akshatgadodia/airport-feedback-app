@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {useParams,useNavigate} from "react-router-dom";
 import FormsData from '../data/FormData'
-import FeedbackQuestions from './../Components/FeedbackQuestions';
-import axios from 'axios'
 import "./stylesheets/Feedbackpage.css"
-import ErrorModal from '../Components/ErrorModal';
+
 import { Rating } from 'react-simple-star-rating'
 
 import { useHttpClient } from '../hooks/useHttpClient';
@@ -17,6 +15,12 @@ const FeedbackPage = () => {
     const data = FormsData[feedbackType][question]
     const [state,setState]=useState({})
     const [rating,setRating]=useState(0)
+
+    useEffect(()=>{
+      if(data.ratingType==="dropdown"){
+        console.log("Fetch Data From Backend")
+      }
+    }),[])
 
     useEffect(()=>{
       setRating(0)
@@ -56,12 +60,22 @@ const FeedbackPage = () => {
 
   return (
     <div className='feedbackdiv'>
-      <ErrorModal error={error} onClear={clearError} />
       <h1>{feedbackType.toUpperCase()}</h1>
       <div className='Qdiv'>
         <div>
-          <FeedbackQuestions question={`${data.q}: `}/>
-          <Rating onClick={ratingChanged} initialValue={rating}/>
+          <div>{data.q}</div>
+          {
+            (data.ratingType==="stars") &&
+            <Rating onClick={ratingChanged} initialValue={rating} transition={true} allowFraction={true}/>
+          }
+          {
+            (data.ratingType==="text") &&
+            <Rating onClick={ratingChanged} initialValue={rating} transition={true} allowFraction={true}/>
+          }
+          {
+            (data.ratingType==="dropdown") &&
+            <Rating onClick={ratingChanged} initialValue={rating} transition={true} allowFraction={true}/>
+          }
         </div>
         <input type="button" value={(data.next) ? 'Next' : 'Submit'} onClick={onClickHandler}></input>
       </div>
