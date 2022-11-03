@@ -6,7 +6,7 @@ export const initialState={
 } 
 
 export const reducer=(state,action)=>{
-    if(action.type==="Login")
+    if(action.type==="UserLogin")
     {
         //console.log(action.payload)
         return {

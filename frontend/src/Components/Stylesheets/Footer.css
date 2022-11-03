@@ -6,6 +6,9 @@
     justify-content: center;
     align-items: center;
 }
+.footer-hidden{
+    display: none;
+}
 .footer-content{
     width: 60%;
     display: flex;

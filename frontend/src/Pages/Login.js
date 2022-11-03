@@ -34,7 +34,7 @@ const Login= () => {
       {
         alert("Successfully registered")
         dispatch({
-          type:"Login",
+          type:"UserLogin",
           payload : {type:"user", flightNumber:data.data.flightNumber, gate:data.data.gate}
         })
         navigate("/home")
@@ -67,7 +67,7 @@ const Login= () => {
           <input type="text" id="name" placeholder="Name" onChange={(e)=>userdetails(e)}/>
           <input type="text" id="email" placeholder="E-Mail" onChange={(e)=>userdetails(e)}/>
           <input type="text" id="mobileNumber" placeholder="Mobile Number" onChange={(e)=>userdetails(e)}/>
-          <input type="number" id="pnr" placeholder="PNR" onChange={(e)=>userdetails(e)}/>
+          <input type="text" id="pnr" placeholder="PNR" onChange={(e)=>userdetails(e)}/>
           <input type="submit" value="Submit" className='login-form-submit'/>
         </form>
         </div>

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, {useContext}  from 'react'
 import './stylesheets/Footer.css'
+
+import {Context} from "../App"
 
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -8,8 +10,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 const Footer = () => {
+  const {state} = useContext(Context)
   return (
-    <>
+    <div className={(state.isLoggedIn) ? "" : "footer-hidden"}>
     <div className='footer'>
       <div className='footer-content'>
         <h1>Airport Feedback App</h1>
@@ -39,7 +42,7 @@ const Footer = () => {
     </div>
     <hr className='footer-hr'/>
     <div className='footer-copyright'>© {new Date().getFullYear()} Airport. All Rights Reserved.</div>
-    </>
+    </div>
   )
 }
 
