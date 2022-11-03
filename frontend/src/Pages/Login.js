@@ -17,15 +17,6 @@ const Login = () => {
 
   const handleForm = async (event) => {
     event.preventDefault();
-    // const data = await sendRequest(
-    //   "/user",
-    //   'POST',
-    //   JSON.stringify(userDetails),
-    //   {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   }
-    // )
     try {
       const response = await axios({
         method: "POST",

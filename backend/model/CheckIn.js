@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const checkInFeedbackSchema = new Schema({
     service : {type : Number, required : true,},
     staff : {type : Number, required : true,},
-    feedbackMessage : {type : String, required : true},
+    feedbackMessage : {type : String, required : false},
 });
 
 module.exports = new mongoose.model("checkinfeedback",checkInFeedbackSchema);

@@ -24,7 +24,7 @@ const NavigationBar = () => {
   return (
     <div className={(loggedInDetails.isLoggedIn) ? "navbar" : "navbar-hidden"}>
       <i className="fa-sharp fa-solid fa-plane-departure"></i>
-      {loggedInDetails.user && <button onClick={btnclicked}>{clicked? "Home":"Feedback"}</button>}
+      {loggedInDetails.isLoggedIn && <button onClick={btnclicked}>{clicked? "Home":"Feedback"}</button>}
     </div>
   )
 }

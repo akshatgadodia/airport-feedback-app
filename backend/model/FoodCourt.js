@@ -7,7 +7,7 @@ const foodCourtFeedbackSchema = new Schema({
     foodQuality : {type : Number, required : true,},
     valueForMoney : {type : Number, required : true,},
     cleanliness : {type : Number, required : true,},
-    feedbackMessage : {type : String, required : true},
+    feedbackMessage : {type : String, required : false},
 });
 
 module.exports = new mongoose.model("foodcourtfeedback",foodCourtFeedbackSchema);
