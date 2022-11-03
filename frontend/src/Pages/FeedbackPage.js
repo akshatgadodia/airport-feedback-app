@@ -2,25 +2,42 @@ import React, { useEffect, useState } from 'react'
 import {useParams,useNavigate} from "react-router-dom";
 import FormsData from '../data/FormData'
 import "./stylesheets/Feedbackpage.css"
-
+import axios from 'axios'
 import { Rating } from 'react-simple-star-rating'
-
-import { useHttpClient } from '../hooks/useHttpClient';
+import Swal from 'sweetalert2'
 
 //http://localhost:3000/feedback/food/1
 const FeedbackPage = () => {
-    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const {feedbackType,question} = useParams();
     const navigate = useNavigate();
     const data = FormsData[feedbackType][question]
     const [state,setState]=useState({})
     const [rating,setRating]=useState(0)
+    const [dropdownData,setDropdownData] = useState([]);
 
     useEffect(()=>{
-      if(data.ratingType==="dropdown"){
-        console.log("Fetch Data From Backend")
+      const fetchData = async () =>{
+        try{
+            const response = await axios.get(
+              `/${feedbackType}s`,
+            )
+            const responseData = await response.data;
+              if (!responseData.success) {
+                throw new Error(responseData);
+              }
+            console.log(responseData.data)
+            //setDropdownData(data.data.data)
+            console.log(dropdownData)
+        } catch(err) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.response.data.error,
+          });
+        }
       }
-    },[])
+      if(data.ratingType==="dropdown") fetchData()
+    },[feedbackType])
 
     useEffect(()=>{
       setRating(0)
@@ -42,19 +59,35 @@ const FeedbackPage = () => {
             }
         }
         else{
-            try {
-              await sendRequest(
-                `/${feedbackType}/`,
-                'POST',
-                JSON.stringify(state),
-                {
+           try {
+              const response = await axios({
+                method: 'POST',  
+                url : `/${feedbackType}/`,
+                data : state,
+                 headers :{
                   'Accept': 'application/json',
                   'Content-Type': 'application/json'
                 }
+              })
+              const responseData = await response.data;
+              if (!responseData.success) {
+                throw new Error(responseData);
+              }
+              console.log(responseData)
+              //alert("Feedback submitted successfully!! Thank you for your Feedback")
+              Swal.fire(
+                'Thank you for your Feedback',
+                "",
+                'success'
               )
-              alert("Feedback submitted successfully!! Thank you for your Feedback")
-            } catch (err) {}
-            //navigate(`/feedback/`)
+            } catch (err) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.response.data.error,
+              });
+            }
+            navigate(`/feedback/`)
         }
     }
 
