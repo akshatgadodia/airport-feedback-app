@@ -10,7 +10,7 @@ const saveUser = asyncHandler(async (req, res, next)=> {
     const ticket = Ticket.findOne({PNR : pnr},async function (err, ticket) {
         if (err) return next(new ErrorResponse("An Error Occurred!",500));
         // Prints "Space Ghost is a talk show host".
-        if(ticket === null) return next(new ErrorResponse("PNR doesn't exixts",401));
+        if(ticket === null) return next(new ErrorResponse("PNR doesn't exists. Please check and try again.",404));
         console.log(ticket);
         const user = res.status(201).json({
         success : true,

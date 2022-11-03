@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import Swal from 'sweetalert2'
 
 export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +29,14 @@ export const useHttpClient = () => {
         setIsLoading(false);
         return responseData;
       } catch (err) {
-        console.log(err)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.message,
+          didClose:() => {setError(null)},
+          didDestroy:() => {setError(null)}
+        });
+        //console.log(err)
         setError(err.message);
         setIsLoading(false);
         throw err;

@@ -6,16 +6,16 @@ import Home from "./Pages/Home";
 import NavigationBar from "./Components/NavigationBar";
 import Feedback from "./Pages/Feedback" 
 import FeedbackPage from "./Pages/FeedbackPage";
-import {reducer,initialState} from "./utils/Reducer"
+import {reducer,initialLoggedInDetails} from "./utils/Reducer"
 import { useReducer } from "react";
 
 export const Context=React.createContext()
 
 function App() {
-const [state,dispatch]=useReducer(reducer,initialState)
+const [loggedInDetails,dispatch]=useReducer(reducer,initialLoggedInDetails)
   return (
     <BrowserRouter>
-      <Context.Provider value={{state,dispatch}}>
+      <Context.Provider value={{loggedInDetails,dispatch}}>
         <NavigationBar/>
           <Routes>
             <Route path="/" element={<Login />}/>

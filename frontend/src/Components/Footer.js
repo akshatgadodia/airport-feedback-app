@@ -10,9 +10,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 
 const Footer = () => {
-  const {state} = useContext(Context)
+  const {loggedInDetails} = useContext(Context)
   return (
-    <div className={(state.isLoggedIn) ? "" : "footer-hidden"}>
+    <div className={(loggedInDetails.isLoggedIn) ? "" : "footer-hidden"}>
     <div className='footer'>
       <div className='footer-content'>
         <h1>Airport Feedback App</h1>
