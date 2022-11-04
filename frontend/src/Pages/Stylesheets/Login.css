@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .login{
-    background: url("../../images/login-page-background-03.jpg");
+    background: url("../../Images/login-page-background-03.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -86,6 +86,10 @@
 .sign-in-page-login-form-submit:hover{
     transform: scale(1.1) !important;
     box-shadow: none !important;
+}
+.login-form a{
+    margin-top: 5px;
+    color: white;
 }
 
 /* form{

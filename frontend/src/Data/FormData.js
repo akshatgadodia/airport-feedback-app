@@ -1,6 +1,6 @@
 const FormData = {
     foodcourt : {
-        1 : {'q':"Service", 'next':2, "ref":"service", "ratingType":"stars", "ratingType":"stars"},
+        1 : {'q':"Service", 'next':2, "ref":"service", "ratingType":"stars"},
         2 : {'q':"Staff" , 'next':3, "ref":"staff", "ratingType":"stars"},
         3 : {'q':"FoodQuality", 'next':4, "ref":"foodQuality", "ratingType":"stars"},
         4 : {'q':"ValueForMoney", 'next':5, "ref":"valueForMoney", "ratingType":"stars"},

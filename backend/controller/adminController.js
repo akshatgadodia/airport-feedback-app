@@ -12,11 +12,18 @@ const saveAdmin = asyncHandler(async (req, res, next)=> {
 });
 
 const getAdmin = asyncHandler(async (req, res, next)=> {
-    const admin = await Admin.find({})
-    res.status(200).json({
+    const admin = await Admin.findOne(req.body)
+    if (admin)
+    {
+        res.status(200).json({
         success : true,
         data : admin
-    })
+        })
+    }
+    else
+    {
+        return next(new ErrorResponse("Invalid Login Details",404))
+    }
 });
 
 module.exports = {saveAdmin,getAdmin}

@@ -1,12 +1,12 @@
 import React from 'react'
-import "./stylesheets/Feedback.css"
-import food from "../images/food.jpg"
-import store from "../images/stores.jpg"
-import helpdesk from "../images/helpdesk.jpg"
-import washroom from "../images/washroom.jpg"
-import lounge from "../images/lounge.jpg"
-import airline from "../images/airline.jpg"
-import checkin from "../images/checkin.jpg"
+import "./Stylesheets/Feedback.css"
+import food from "../Images/food.jpg"
+import store from "../Images/stores.jpg"
+import helpdesk from "../Images/helpdesk.jpg"
+import washroom from "../Images/washroom.jpg"
+import lounge from "../Images/lounge.jpg"
+import airline from "../Images/airline.jpg"
+import checkin from "../Images/checkin.jpg"
 import FeedbackOptions from '../Components/FeedbackOptions'
 
 function Feedbacks() {

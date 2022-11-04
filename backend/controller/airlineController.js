@@ -15,7 +15,7 @@ const getAirlineFeedback = asyncHandler(async (req, res, next)=> {
     const airlines = await Airline.find({})
     return res.status(200).json({
         success : true,
-        data : airline
+        data : airlines
     })
 });
 

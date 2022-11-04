@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react'
 import './Stylesheets/Login.css'
 import {useNavigate} from "react-router-dom"
 import {Context} from "../App"
-import TitleLetterDisplay from './../Components/TitleLetterDisplay';
+import TitleLetterDisplay from '../Components/TitleLetterDisplay';
 import Swal from 'sweetalert2'
 
 import { useHttpClient } from '../hooks/useHttpClient';
-const Login= () => {
+const AdminRegister= () => {
   const { error, sendRequest } = useHttpClient();
   const [userDetails,setUserDetails] = useState()
   const navigate=useNavigate()
@@ -21,7 +21,7 @@ const Login= () => {
     console.log(JSON.stringify(userDetails))
     try {
       const data = await sendRequest(
-        "/user",
+        "/admin/signup",
         'POST',
         JSON.stringify(userDetails),
         {
@@ -38,7 +38,7 @@ const Login= () => {
         )
         dispatch({
           type:"UserLogin",
-          payload : {type:"user", flightNumber:data.data.flightNumber, gate:data.data.gate}
+          payload : {type:"admin"}
         })
         setUserDetails({})
         navigate("/home")
@@ -69,10 +69,9 @@ const Login= () => {
         <form onSubmit={handleForm} className="login-form">
           <input type="text" id="name" placeholder="Name" onChange={(e)=>onChangeHandler(e)}/>
           <input type="text" id="email" placeholder="E-Mail" onChange={(e)=>onChangeHandler(e)}/>
-          <input type="text" id="mobileNumber" placeholder="Mobile Number" onChange={(e)=>onChangeHandler(e)}/>
-          <input type="text" id="pnr" placeholder="PNR" onChange={(e)=>onChangeHandler(e)}/>
+          <input type="password" id="password" placeholder="Password" onChange={(e)=>onChangeHandler(e)}/>
           <input type="submit" value="Submit" className='login-form-submit'/>
-          <a href="/adminSignup">Are you an admin? Click to Login</a>
+          <a href="/adminSignin">Already have an account? Click to Login</a>
         </form>
         </div>
       </div>
@@ -80,4 +79,4 @@ const Login= () => {
   )
 }
 
-export default Login
+export default AdminRegister

@@ -12,6 +12,7 @@ export const useHttpClient = () => {
       setIsLoading(true);
       const httpAbortCtrl = new AbortController();
       activeHttpRequests.current.push(httpAbortCtrl);
+      console.log(body);
       try {
         const response = await fetch(url, {
           method,
@@ -19,16 +20,19 @@ export const useHttpClient = () => {
           headers,
           signal: httpAbortCtrl.signal
         });
+        console.log(response)
         const responseData = await response.json();
         activeHttpRequests.current = activeHttpRequests.current.filter(
           reqCtrl => reqCtrl !== httpAbortCtrl
         );
+        console.log(responseData);
         if (!responseData.success) {
           throw new Error(responseData.error);
         }
         setIsLoading(false);
         return responseData;
       } catch (err) {
+        console.log(err)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -49,12 +53,12 @@ export const useHttpClient = () => {
     setError(null);
   };
 
-  useEffect(() => {
-    return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      activeHttpRequests.current.forEach(abortCtrl => abortCtrl.abort());
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  //     activeHttpRequests.current.forEach(abortCtrl => abortCtrl.abort());
+  //   };
+  // }, []);
 
   return { isLoading, error, sendRequest, clearError };
 };

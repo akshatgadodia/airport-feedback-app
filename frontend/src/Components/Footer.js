@@ -1,5 +1,5 @@
 import React, {useContext}  from 'react'
-import './stylesheets/Footer.css'
+import './Stylesheets/Footer.css'
 
 import {Context} from "../App"
 

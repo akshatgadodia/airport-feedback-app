@@ -8,7 +8,8 @@ import Feedback from "./Pages/Feedback"
 import FeedbackPage from "./Pages/FeedbackPage";
 import {reducer,initialLoggedInDetails} from "./utils/Reducer"
 import { useReducer } from "react";
-
+import AdminLogin from "./Pages/AdminLogin";
+import AdminRegister from "./Pages/AdminRegister";
 export const Context=React.createContext()
 
 function App() {
@@ -19,6 +20,8 @@ const [loggedInDetails,dispatch]=useReducer(reducer,initialLoggedInDetails)
         <NavigationBar/>
           <Routes>
             <Route path="/" element={<Login />}/>
+            <Route path="/adminSignin" element={<AdminLogin />}/>
+            <Route path="/adminSignup" element={<AdminRegister />}/>
             <Route path="/home" element={<Home />}/>
             <Route path="/feedback/:feedbackType/:question" element={<FeedbackPage/>}/>
             <Route path="/feedback" element={<Feedback/>}/>

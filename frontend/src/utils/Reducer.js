@@ -11,7 +11,7 @@ export const reducer=(state,action)=>{
         //console.log(action.payload)
         return {
             isLoggedIn : true,
-            userType : "user",
+            userType : action.payload.type,
             flightNumber : action.payload.flightNumber,
             gate : action.payload.gate
         }

@@ -5,18 +5,19 @@ const User = require('../model/User')
 const Ticket = require('../model/Ticket'); 
 
 const saveUser = asyncHandler(async (req, res, next)=> {
-    const pnr = req.body.pnr;
-    console.log(req.body)
-    const ticket = Ticket.findOne({PNR : pnr},async function (err, ticket) {
-        if (err) return next(new ErrorResponse("An Error Occurred!",500));
+    const ticket = await Ticket.findOne({PNR:req.body.pnr})
+        // .then(async function (err, ticket) {
+        // if (err) return next(new ErrorResponse("An Error Occurred!",500));
         // Prints "Space Ghost is a talk show host".
-        if(ticket === null) return next(new ErrorResponse("PNR doesn't exists. Please check and try again.",404));
         console.log(ticket);
-        const user = res.status(201).json({
+        if(ticket === null) return next(new ErrorResponse("PNR doesn't exists. Please check and try again.",404));
+        // const user=await new User(req.body)
+        // console.log(user);
+        res.status(201).json({
         success : true,
         data : ticket
         })
-      });
+    //   });
 });
 
 const getUsers = asyncHandler(async (req, res, next)=> {
