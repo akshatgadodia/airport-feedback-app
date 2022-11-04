@@ -1,53 +1,56 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import FormsData from "../data/FormData";
-import "./stylesheets/Feedbackpage.css";
-import axios from "axios";
+import FormsData from "../Data/FormData";
+import "./Stylesheets/Feedbackpage.css";
 import { Rating } from "react-simple-star-rating";
+import { useHttpClient } from "../hooks/useHttpClient";
 import Swal from "sweetalert2";
-
 //http://localhost:3000/feedback/food/1
+
 const FeedbackPage = () => {
+  const { sendRequest } = useHttpClient();
   const { feedbackType, question } = useParams();
   const navigate = useNavigate();
   const data = FormsData[feedbackType][question];
   const [state, setState] = useState({});
   const [rating, setRating] = useState(0);
   const [dropdownData, setDropdownData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/${feedbackType}s`);
-        const responseData = await response.data;
-        if (!responseData.success) {
-          throw new Error(responseData);
-        }
-        console.log(responseData.data);
-        //setDropdownData(data.data.data)
-        console.log(dropdownData);
-      } catch (err) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: err.response.data.error,
-        });
-      }
-    };
-    if (data.ratingType === "dropdown") fetchData();
-  }, [feedbackType]);
+  const [typeName, setTypeName] = useState("");
 
   useEffect(() => {
     setRating(0);
   }, [question]);
 
+  useEffect(() => {
+    const fetchDropdownData = async () => {
+      const type = await sendRequest(`/${feedbackType}s/`);
+      setDropdownData(type.data);
+    };
+
+    // sendRequest(
+    //   `/${feedbackType}s/`,
+    // ).then((t)=>{
+    //   setDropdownData(t.data)
+    // }).catch((err)=>{})
+    if (data.ratingType === "dropdown") fetchDropdownData();
+  }, [feedbackType]);
+
+  //console.log(dropdownData);
+
   const ratingChanged = (newRating) => {
     setState({ ...state, [data.ref]: newRating });
     setRating(newRating);
   };
+
+  const onTextDataChanged = (e) => {
+    //console.log(e.target.value);
+    setRating(e.target.value);
+    setState({ ...state, [data.ref]: e.target.value });
+    //console.log(rating);
+  };
+
   const onClickHandler = async () => {
-    if (data.ratingType === "dropdown" && !rating) {
-      //alert("Please select a rating");
+    if (data.ratingType === "dropdown" && typeName === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -56,7 +59,6 @@ const FeedbackPage = () => {
       return null;
     }
     if (data.ratingType === "stars" && !rating) {
-      //alert("Please select a rating");
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -65,32 +67,16 @@ const FeedbackPage = () => {
       return null;
     }
     if (data.next) {
-        navigate(`/feedback/${feedbackType}/${data.next}`);
+      navigate(`/feedback/${feedbackType}/${data.next}`);
     } else {
       try {
-        const response = await axios({
-          method: "POST",
-          url: `/${feedbackType}/`,
-          data: state,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
+        await sendRequest(`/${feedbackType}/`, "POST", JSON.stringify(state), {
+          Accept: "application/json",
+          "Content-Type": "application/json",
         });
-        const responseData = await response.data;
-        if (!responseData.success) {
-          throw new Error(responseData);
-        }
-        console.log(responseData);
-        //alert("Feedback submitted successfully!! Thank you for your Feedback")
         Swal.fire("Thank you for your Feedback", "", "success");
-      } catch (err) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: err.response.data.error,
-        });
-      }
+        navigate("/feedback");
+      } catch (err) {}
       navigate(`/feedback/`);
     }
   };
@@ -110,20 +96,27 @@ const FeedbackPage = () => {
             />
           )}
           {data.ratingType === "text" && (
-            <Rating
-              onClick={ratingChanged}
-              initialValue={rating}
-              transition={true}
-              allowFraction={true}
+            <textarea
+              onChange={(e) => onTextDataChanged(e)}
+              width="fit-content"
+              height="fit-content"
             />
           )}
           {data.ratingType === "dropdown" && (
-            <Rating
-              onClick={ratingChanged}
-              initialValue={rating}
-              transition={true}
-              allowFraction={true}
-            />
+            <select
+              onChange={(e) => {
+                setTypeName(e.target.value);
+                onTextDataChanged(e);
+              }}
+            >
+              <option selected={true} disabled="disabled">
+                Choose {feedbackType}
+              </option>
+              {dropdownData &&
+                dropdownData.map((type, idx) => (
+                  <option key={idx}>{type.name}</option>
+                ))}
+            </select>
           )}
         </div>
         <input

@@ -1,6 +1,6 @@
 import React from 'react'
-import "./stylesheets/Home.css"
-import image from "../images/pexels-martin-dickson-2366581.jpg"
+import "./Stylesheets/Home.css"
+import image from "../Images/pexels-martin-dickson-2366581.jpg"
 function Home() {
   return (
     <div className='home'>

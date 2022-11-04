@@ -1,5 +1,5 @@
 import React, { useContext,useState } from 'react'
-import './stylesheets/NavigationBar.css'
+import './Stylesheets/NavigationBar.css'
 import {Context} from "../App"
 import { useNavigate } from 'react-router-dom'
 
@@ -24,7 +24,7 @@ const NavigationBar = () => {
   return (
     <div className={(loggedInDetails.isLoggedIn) ? "navbar" : "navbar-hidden"}>
       <i className="fa-sharp fa-solid fa-plane-departure"></i>
-      {loggedInDetails.isLoggedIn && <button onClick={btnclicked}>{clicked? "Home":"Feedback"}</button>}
+      {loggedInDetails.userType && <button onClick={btnclicked}>{clicked? "Home":"Feedback"}</button>}
     </div>
   )
 }

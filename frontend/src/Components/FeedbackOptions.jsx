@@ -1,5 +1,5 @@
 import React from 'react'
-import "./stylesheets/FeedbackOptions.css"
+import "./Stylesheets/FeedbackOptions.css"
 import {useNavigate} from "react-router-dom";
 
 const FeedbackOptions = props => {

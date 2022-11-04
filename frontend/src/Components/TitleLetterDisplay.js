@@ -1,5 +1,5 @@
 import React from 'react'
-import './stylesheets/TitleLetterDisplayCSS.css';
+import './Stylesheets/TitleLetterDisplayCSS.css';
 
 const TitleLetterDisplay = (props) => {
   return (
