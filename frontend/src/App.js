@@ -10,6 +10,7 @@ import {reducer,initialLoggedInDetails} from "./utils/Reducer"
 import { useReducer } from "react";
 import AdminLogin from "./Pages/AdminLogin";
 import AdminRegister from "./Pages/AdminRegister";
+import AdminFeedbackPage from "./Pages/AdminFeedbackPage";
 export const Context=React.createContext()
 
 
@@ -24,6 +25,7 @@ const [loggedInDetails,dispatch]=useReducer(reducer,initialLoggedInDetails)
             <Route path="/" element={<Login />}/>
             <Route path="/adminSignin" element={<AdminLogin />}/>
             <Route path="/adminSignup" element={<AdminRegister />}/>
+            <Route path="/adminFeedback/:feedbackType" element={<AdminFeedbackPage />}/>
             <Route path="/home" element={<Home />}/>
             <Route path="/feedback/:feedbackType/:question" element={<FeedbackPage/>}/>
             <Route path="/feedback" element={<Feedback/>}/>

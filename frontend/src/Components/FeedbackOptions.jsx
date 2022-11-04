@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./Stylesheets/FeedbackOptions.css"
 import {useNavigate} from "react-router-dom";
+import { Context } from '../App';
 
 const FeedbackOptions = props => {
   const navigate = useNavigate();
+  const { loggedInDetails } = useContext(Context);
 
   const onClickHandler = () => {
+    if(loggedInDetails.userType=="user")
     navigate(`/feedback/${props.feedbackType}/1`)
+    else if(loggedInDetails.userType=="admin"){
+    navigate(`/adminFeedback/${props.feedbackType}`)
+    }
   }
 
   return (

@@ -5,7 +5,8 @@ const FormData = {
         3 : {'q':"FoodQuality", 'next':4, "ref":"foodQuality", "ratingType":"stars"},
         4 : {'q':"ValueForMoney", 'next':5, "ref":"valueForMoney", "ratingType":"stars"},
         5 : {'q':"Cleanliness", 'next':6, "ref":"cleanliness", "ratingType":"stars"},
-        6 : {'q':"FeedbackMessage", "ref":"feedbackMessage", "ratingType":"text"},
+        6 : {'q':"Rating", 'next':7,"ref":"rating", "ratingType":"stars"},
+        7 : {'q':"FeedbackMessage", "ref":"feedbackMessage", "ratingType":"text"},
     },
     airline : {
         1 : {'q':"Name of Airline", 'next':2,"ref":"name", "ratingType":"dropdown"},
@@ -17,8 +18,9 @@ const FormData = {
     },
     checkin : {
         1 : {'q':"Service" , 'next':2,"ref":"service", "ratingType":"stars"},
-        2 : {'q':"Staff", 'next':3,"ref":"staff", "ratingType":"stars"},
-        3 : {'q':"FeedbackMessage","ref":"feedbackMessage", "ratingType":"text"},
+        2 : {'q':"Rating", 'next':3,"ref":"rating", "ratingType":"stars"},
+        3 : {'q':"Staff", 'next':4,"ref":"staff", "ratingType":"stars"},
+        4 : {'q':"FeedbackMessage","ref":"feedbackMessage", "ratingType":"text"},
     },
     helpdesk : {
         1 : {'q':"Rating", 'next':2,"ref":"rating", "ratingType":"stars"},
