@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const asyncHandler = require('../middleware/asyncHandler')
+const ErrorResponse = require('../utils/errorResponse')
 
 const Admin = require('../model/Admin')
 
