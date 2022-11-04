@@ -22,7 +22,7 @@ const FormData = {
     },
     helpdesk : {
         1 : {'q':"Rating", 'next':2,"ref":"rating", "ratingType":"stars"},
-        2 : {'q':"How efficiently the help desk answered your query?", 'next':3,"ref":"service", "ratingType":"stars"},
+        2 : {'q':"How efficiently the help desk answered your query?", 'next':3,"ref":"staffEfficiency", "ratingType":"stars"},
         3 : {'q':"Behaviour of Staff", 'next':4,"ref":"staff", "ratingType":"stars"},
         4 : {'q':"FeedbackMessage","ref":"feedbackMessage", "ratingType":"text"},
     },

@@ -1,5 +1,5 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
-import Swal from 'sweetalert2'
+import { useState, useCallback, useRef, useEffect } from "react";
+import Swal from "sweetalert2";
 
 export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,22 +8,22 @@ export const useHttpClient = () => {
   const activeHttpRequests = useRef([]);
 
   const sendRequest = useCallback(
-    async (url, method = 'GET', body = null, headers = {}) => {
+    async (url, method = "GET", body = null, headers = {}) => {
       setIsLoading(true);
       const httpAbortCtrl = new AbortController();
       activeHttpRequests.current.push(httpAbortCtrl);
-      console.log(body);
+      //console.log(body);
       try {
         const response = await fetch(url, {
           method,
           body,
           headers,
-          signal: httpAbortCtrl.signal
+          signal: httpAbortCtrl.signal,
         });
         console.log(response)
         const responseData = await response.json();
         activeHttpRequests.current = activeHttpRequests.current.filter(
-          reqCtrl => reqCtrl !== httpAbortCtrl
+          (reqCtrl) => reqCtrl !== httpAbortCtrl
         );
         console.log(responseData);
         if (!responseData.success) {
@@ -34,11 +34,15 @@ export const useHttpClient = () => {
       } catch (err) {
         console.log(err)
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
+          icon: "error",
+          title: "Oops...",
           text: err.message,
-          didClose:() => {setError(null)},
-          didDestroy:() => {setError(null)}
+          didClose: () => {
+            setError(null);
+          },
+          didDestroy: () => {
+            setError(null);
+          },
         });
         //console.log(err)
         setError(err.message);

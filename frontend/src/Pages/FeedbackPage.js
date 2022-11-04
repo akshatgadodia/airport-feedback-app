@@ -2,9 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import {useParams,useNavigate} from "react-router-dom";
 import FormsData from '../Data/FormData'
 import "./Stylesheets/Feedbackpage.css"
-
-import { Rating } from 'react-simple-star-rating'
-
+import { Rating } from "react-simple-star-rating";
 import { useHttpClient } from '../hooks/useHttpClient';
 import { Context } from '../App';
 
@@ -87,9 +85,7 @@ const FeedbackPage = () => {
       }
     },[])
 
-    useEffect(()=>{
-      setRating(0)
-    },[question])
+  //console.log(dropdownData);
 
     const ratingChanged = (newRating) => {
         setState({...state,[data.ref]:newRating})
@@ -134,7 +130,7 @@ const FeedbackPage = () => {
     }
 
   return (
-    <div className='feedbackdiv'>
+    <div className="feedbackdiv">
       <h1>{feedbackType.toUpperCase()}</h1>
       {(loggedInDetails && loggedInDetails.userType==="user")?(
       <div className='Qdiv'>
@@ -203,7 +199,7 @@ const FeedbackPage = () => {
       </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default FeedbackPage
+export default FeedbackPage;
