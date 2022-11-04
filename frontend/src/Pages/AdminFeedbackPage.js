@@ -1,133 +1,148 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
-// import FormsData from "../Data/FormData";
-import "./Stylesheets/Feedbackpage.css";
+import React, { /*useContext,*/ useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "./Stylesheets/AdminFeedbackPage.css";
 import { useHttpClient } from "../hooks/useHttpClient";
-
-//http://localhost:3000/feedback/food/1
+import FeedbackDataDisplayCard from "./../Components/FeedbackDataDisplayCard";
+import { Collapse } from "antd";
+import { Divider, List, Typography } from "antd";
 const FeedbackPage = () => {
+  const { Panel } = Collapse;
   const { sendRequest } = useHttpClient();
-  const { feedbackType} = useParams();
-  const [feedback, setfeedback] = useState([]);
-  const [showmsgs, setshowmsgs] = useState(false);
-  const [feedbackmsgs, setfeedbackmsgs] = useState([]);
-  const[dropdownflag,setdropdownflag]=useState(false)
+  const { feedbackType } = useParams();
+  const [feedback, setFeedback] = useState([]);
+  const [displayFeedbackMessages, setDisplayFeedbackMessages] = useState(false);
+  const [feedbackMessages, setFeedbackMessages] = useState([]);
+  const [dropdownRequired, setDropdownRequired] = useState(false);
+
   useEffect(() => {
-    if(["airline","lounge","store"].includes(feedbackType))
-    {
-        setdropdownflag(true)
-    }})
-
-   useEffect(()=>{
-    const d=async () => {
-        const t = await sendRequest(`/${feedbackType}/`);
-        console.log(t);
-        console.log("helloooo",dropdownflag);
-        if(["airline","lounge","store"].includes(feedbackType)) {
-          const typedetails = {};
-          t.data.map((obj) => {
-            let name = obj["name"];
-            if (!(name in typedetails))
-              typedetails[name] = { feedbackMessage: [] };
-            for (let i in obj) {
-              if (i === "feedbackMessage") {
-                typedetails[name][i].push(obj[i]);
-              } else if (i !== "_id" && i !== "__v" && i !== "name") {
-                if (i in typedetails[name]) typedetails[name][i] += obj[i];
-                else typedetails[name][i] = 0;
-              }
-            }
-            console.log(typedetails);
-            const l=[...Object.entries(typedetails)];
-            setfeedback([...l]);
-            console.log(feedback);
-          });
-        } else {
-          const details = { feedbackMessage: [] };
-          t.data.map((obj) => {
-            for (let i in obj) {
-              if (i === "feedbackMessage") {
-                details[i].push(obj[i]);
-              } else if (i !== "_id" && i !== "__v") {
-                if (i in details) details[i] += obj[i];
-                else details[i] = 0;
-              }
-            }
-          });
-          setfeedbackmsgs([...details.feedbackMessage]);
-          setfeedback([...Object.entries(details)]);
-        }
-      }
-      d();
+    if (["airline", "lounge", "store"].includes(feedbackType)) {
+      setDropdownRequired(true);
+    }
   }, []);
-    
 
-  const showfeedbackmsgs = () => {
-    setshowmsgs(!showmsgs);
+  useEffect(() => {
+    const getData = async () => {
+      const fetchedData = await sendRequest(`/${feedbackType}/`);
+      if (["airline", "lounge", "store"].includes(feedbackType)) {
+        const typeOfFeedback = {};
+        fetchedData.data.map((obj) => {
+          let name = obj["name"];
+          if (!(name in typeOfFeedback))
+            typeOfFeedback[name] = { feedbackMessage: [] };
+          for (let i in obj) {
+            if (i === "feedbackMessage") {
+              typeOfFeedback[name][i].push(obj[i]);
+            } else if (i !== "_id" && i !== "__v" && i !== "name") {
+              if (i in typeOfFeedback[name]) typeOfFeedback[name][i] += obj[i];
+              else typeOfFeedback[name][i] = 0;
+            }
+          }
+          const result = [...Object.entries(typeOfFeedback)];
+          setFeedback([...result]);
+        });
+      } else {
+        const details = { feedbackMessage: [] };
+        fetchedData.data.map((obj) => {
+          for (let i in obj) {
+            if (i === "feedbackMessage") {
+              details[i].push(obj[i]);
+            } else if (i !== "_id" && i !== "__v") {
+              if (i in details) details[i] += obj[i];
+              else details[i] = 0;
+            }
+          }
+        });
+        setFeedbackMessages([...details.feedbackMessage]);
+        setFeedback([...Object.entries(details)]);
+      }
+    };
+    getData();
+  }, []);
+
+  const showfeedbackMessages = () => {
+    setDisplayFeedbackMessages(!displayFeedbackMessages);
   };
 
   return (
-    <div className="feedbackdiv">
-      <h1>{feedbackType.toUpperCase()}</h1>
-      {(!dropdownflag)?(
-      <div>
-        {feedback &&
-            feedback.map((feild) => {
-              if (feild[0] !== "feedbackMessage")
+    <div className="admin-feedback-page">
+      <h1 className="admin-feedback-page-title">
+        {feedbackType.toUpperCase()}
+      </h1>
+      <h1 className="admin-feedback-page-subtitle">FEEDBACK SUMMARY REPORT</h1>
+      {!dropdownRequired ? (
+        <>
+          <div className="admin-feedback-page-display">
+            {feedback.map((feild, idx) => {
+              if (feild[0] !== "feedbackMessage") {
                 return (
-                  <p>
-                    {feild[0]} :{" "}
-                    <span>{Math.ceil(feild[1] / (feedback.length * 5))}</span>
-                  </p>
+                  <FeedbackDataDisplayCard
+                    key={idx}
+                    title={feild[0]}
+                    averageRating={Math.ceil(feild[1] / (feedback.length * 5))}
+                  />
                 );
-        })}
-        {showmsgs ? (
-            <div>
-              {feedbackmsgs && feedbackmsgs.map((msg) => <p>{msg}</p>)}
-              <button onClick={showfeedbackmsgs}>Close Messages</button>
-            </div>
-          ) : (
-            (
-              <button onClick={showfeedbackmsgs}>Feedback Message</button>
-            )
-          )}
-        
-      </div>):
-      (<div>
-        {feedback &&
-            feedback.map((type) => {
-              return (
-                <div style={{ border: "2px solid black" }}>
-                  <h1>{type[0]}</h1>
-                  {Object.entries(type[1]).map((feild, ind) => {
+              }
+            })}
+          </div>
+          <Collapse accordion className="admin-feedback-page-accordion">
+            <Panel
+              header="Feedback Messages"
+              key="1"
+              className="admin-feedback-page-panel"
+            >
+              <List
+                className="admin-feedback-page-list"
+                bordered
+                dataSource={feedbackMessages}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+              />
+            </Panel>
+          </Collapse>
+        </>
+      ) : (
+        <>
+          {feedback.map((type) => {
+            return (
+              <div className="admin-feedback-page-dropdown-display">
+                <h1 className="admin-feedback-page-dropdown-display-title">
+                  {type[0]}
+                </h1>
+                <div className="admin-feedback-page-display">
+                  {Object.entries(type[1]).map((feild, idx) => {
                     if (feild[0] !== "feedbackMessage")
                       return (
-                        <p key={ind}>
-                          {feild[0]}:
-                          <span>
-                            {Math.ceil(
-                              type[1]["feedbackMessage"].length!==0? (feild[1] / (type[1]["feedbackMessage"].length * 5)):feild[1]
-                            )}
-                          </span>
-                        </p>
+                        <FeedbackDataDisplayCard
+                          key={idx}
+                          title={feild[0]}
+                          averageRating={Math.ceil(
+                            feild[1] / (feedback.length * 5)
+                          )}
+                        />
                       );
                   })}
-                    {showmsgs ? (
-                    <div>
-                      {type[1]["feedbackMessage"].map((msg, ind) => (
-                        <p key={ind}>{msg}</p>
-                      ))}
-                      <button onClick={showfeedbackmsgs}>Close Messages</button>
-                    </div>
-                  ) : (
-                    <button onClick={showfeedbackmsgs}>Feedback Message</button>
-                  )}
                 </div>
-              );
-            })}
-      </div>)}
+                <Collapse accordion className="admin-feedback-page-accordion">
+                  <Panel
+                    header="Feedback Messages"
+                    key="1"
+                    className="admin-feedback-page-panel"
+                  >
+                    <List
+                      key="x"
+                      className="admin-feedback-page-list"
+                      bordered
+                      dataSource={feedbackMessages}
+                      renderItem={(item) => <List.Item>{item}</List.Item>}
+                    />
+                  </Panel>
+                </Collapse>
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
-    )
+  );
 };
 
 export default FeedbackPage;
