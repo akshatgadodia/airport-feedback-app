@@ -11,14 +11,14 @@ const Login= () => {
   const [userDetails,setUserDetails] = useState()
   const navigate=useNavigate()
   const {dispatch}=useContext(Context)
-  
+
   const onChangeHandler=(e)=>{
     setUserDetails({...userDetails,[e.target.id]:e.target.value})
   }
 
   const handleForm = async(event)=> {
     event.preventDefault();
-    console.log(JSON.stringify(userDetails))
+    //console.log(JSON.stringify(userDetails))
     try {
       const data = await sendRequest(
         "/user",

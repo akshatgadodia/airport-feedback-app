@@ -12,7 +12,9 @@ import AdminLogin from "./Pages/AdminLogin";
 import AdminRegister from "./Pages/AdminRegister";
 export const Context=React.createContext()
 
+
 function App() {
+    
 const [loggedInDetails,dispatch]=useReducer(reducer,initialLoggedInDetails)
   return (
     <BrowserRouter>
