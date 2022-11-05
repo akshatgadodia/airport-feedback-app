@@ -60,10 +60,11 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="login"
-    style={{
-      backgroundImage: "url('Images/login-page-background-03.jpg')",
-    }}
+    <div
+      className="login"
+      style={{
+        backgroundImage: "url('Images/login-page-background-03.jpg')",
+      }}
     >
       <div className="login-inside-border">
         <div className="login-form-div">
@@ -181,7 +182,7 @@ const UserLogin = () => {
               onChange={(e) => onChangeHandler(e)}
             />
             <input type="submit" value="Submit" className="login-form-submit" />
-            <Link to="/admin-signin">Are you an admin? Click to Login</Link>
+            <Link to="/admin-signin" className="other-login">Are you an admin? Click to Login</Link>
           </form>
         </div>
       </div>

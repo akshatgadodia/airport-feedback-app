@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -89,7 +89,7 @@
 .login-form a{
     margin-top: 5px;
     color: white;
-}
+} */
 
 /* form{
     min-width: 300px;
