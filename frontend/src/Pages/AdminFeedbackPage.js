@@ -4,16 +4,16 @@ import "./Stylesheets/AdminFeedbackPage.css";
 import { useHttpClient } from "../hooks/useHttpClient";
 import FeedbackDataDisplayCard from "./../Components/FeedbackDataDisplayCard";
 import { Collapse } from "antd";
-import { Divider, List, Typography } from "antd";
+import { List } from "antd";
+
 const FeedbackPage = () => {
   const { Panel } = Collapse;
   const { sendRequest } = useHttpClient();
   const { feedbackType } = useParams();
   const [feedback, setFeedback] = useState([]);
-  const [displayFeedbackMessages, setDisplayFeedbackMessages] = useState(false);
   const [feedbackMessages, setFeedbackMessages] = useState([]);
   const [dropdownRequired, setDropdownRequired] = useState(false);
-
+  let messages = [];
   useEffect(() => {
     if (["airline", "lounge", "store"].includes(feedbackType)) {
       setDropdownRequired(true);
@@ -34,7 +34,7 @@ const FeedbackPage = () => {
               typeOfFeedback[name][i].push(obj[i]);
             } else if (i !== "_id" && i !== "__v" && i !== "name") {
               if (i in typeOfFeedback[name]) typeOfFeedback[name][i] += obj[i];
-              else typeOfFeedback[name][i] = 0;
+              else typeOfFeedback[name][i] = obj[i];
             }
           }
           const result = [...Object.entries(typeOfFeedback)];
@@ -48,7 +48,7 @@ const FeedbackPage = () => {
               details[i].push(obj[i]);
             } else if (i !== "_id" && i !== "__v") {
               if (i in details) details[i] += obj[i];
-              else details[i] = 0;
+              else details[i] = obj[i];
             }
           }
         });
@@ -58,10 +58,6 @@ const FeedbackPage = () => {
     };
     getData();
   }, []);
-
-  const showfeedbackMessages = () => {
-    setDisplayFeedbackMessages(!displayFeedbackMessages);
-  };
 
   return (
     <div className="admin-feedback-page">
@@ -78,7 +74,8 @@ const FeedbackPage = () => {
                   <FeedbackDataDisplayCard
                     key={idx}
                     title={feild[0]}
-                    averageRating={Math.ceil(feild[1] / (feedback.length * 5))}
+                    averageRating={feild[1] / feedbackMessages.length}
+                    personsRated={feedbackMessages.length}
                   />
                 );
               }
@@ -109,14 +106,19 @@ const FeedbackPage = () => {
                 </h1>
                 <div className="admin-feedback-page-display">
                   {Object.entries(type[1]).map((feild, idx) => {
+                    //console.log(feild)
+                    if (feild[0] === "feedbackMessage") {
+                      messages = feild[1];
+                    }
+                  })}
+                  {Object.entries(type[1]).map((feild, idx) => {
                     if (feild[0] !== "feedbackMessage")
                       return (
                         <FeedbackDataDisplayCard
                           key={idx}
                           title={feild[0]}
-                          averageRating={Math.ceil(
-                            feild[1] / (feedback.length * 5)
-                          )}
+                          averageRating={feild[1] / messages.length}
+                          personsRated={messages.length}
                         />
                       );
                   })}
@@ -131,11 +133,12 @@ const FeedbackPage = () => {
                       key="x"
                       className="admin-feedback-page-list"
                       bordered
-                      dataSource={feedbackMessages}
+                      dataSource={messages}
                       renderItem={(item) => <List.Item>{item}</List.Item>}
                     />
                   </Panel>
                 </Collapse>
+                {(messages = [])}
               </div>
             );
           })}

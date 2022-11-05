@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .login{
-    background: url("../../Images/login-page-background-03.jpg");
+    background: url("../../../public/Images/login-page-background-03.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

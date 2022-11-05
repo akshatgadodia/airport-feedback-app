@@ -1,5 +1,5 @@
 export const initialLoggedInDetails={
-    isLoggedIn : true,
+    isLoggedIn : false,
     userType : "",
     flightNumber :"",
     gate : "" 

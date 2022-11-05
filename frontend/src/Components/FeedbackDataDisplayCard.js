@@ -8,8 +8,8 @@ import {
 
 const FeedbackDataDisplayCard = (props) => {
   const maxRating = 5;
-  const averageRating = props.averageRating;
-  const personsRated = 4;
+  const averageRating = props.averageRating.toFixed(1);
+  const personsRated = props.personsRated;
   const maxPersons = averageRating * personsRated;
   const title = props.title.toUpperCase();
   return (
@@ -28,16 +28,16 @@ const FeedbackDataDisplayCard = (props) => {
               trailColor: "gold",
             })}
           >
-          <div style={{ width: "84%" }}>
-          <CircularProgressbar
-            value={personsRated}
-            maxValue={maxPersons}
-            styles={buildStyles({
-              trailColor: "transparent"
-            })}
-          />
-        </div>
-        </CircularProgressbarWithChildren>
+            <div style={{ width: "84%" }}>
+              <CircularProgressbar
+                value={personsRated}
+                maxValue={maxPersons}
+                styles={buildStyles({
+                  trailColor: "transparent",
+                })}
+              />
+            </div>
+          </CircularProgressbarWithChildren>
         </div>
       </div>
       <div className="feedback-data-display-div-text">

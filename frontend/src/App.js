@@ -21,13 +21,13 @@ const [user,setuser]=useState({})
 const [loggedInDetails,dispatch]=useReducer(reducer,initialLoggedInDetails)
 useEffect(()=>{
   console.log(localStorage.getItem("UserName"));
-  const u=JSON.parse(localStorage.getItem("UserName"))
-  if(u)
+  const loginData=JSON.parse(localStorage.getItem("UserName"))
+  if(loginData)
   {
-    setuser(u)
+    setuser(loginData)
     dispatch({
       type: "UserLogin",
-      payload:u,
+      payload:loginData,
     });
   }
 },[])
