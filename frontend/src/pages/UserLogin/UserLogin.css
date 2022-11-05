@@ -17,7 +17,6 @@
 
 .login-head {
   display: flex;
-  padding-bottom: 5px;
 }
 
 .login-inside-border {
@@ -61,7 +60,7 @@
   border-radius: 30px;
   align-items: center;
   height: 40px;
-  width: 80%;
+  width: 320px;
   font-size: large;
   padding-left: 1rem;
   margin-bottom: 20px;
@@ -82,20 +81,22 @@
 .login-form-submit {
   border-radius: 10px !important;
   color: #361413 !important;
+  font-size: 22.5px !important;
   font-weight: bold !important;
-  margin: 10px 0 10px 0 !important;
-  width: 60% !important;
+  margin: 5px 0 10px 0 !important;
+  width: 150px !important;
+  height: 45px !important;
   padding-left: 0rem !important;
   background-color: #ffa40c !important;
 }
 
 .login-form-submit:hover {
-    box-shadow: 0 0 20px #1b0908;
+  box-shadow: 0 0 20px #1b0908;
   background-color: #ffc053 !important;
 }
 
 .login-form-submit:active {
-    box-shadow: none;
+  box-shadow: none;
   background-color: #e79200 !important;
 }
 

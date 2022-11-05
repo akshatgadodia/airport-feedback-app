@@ -69,92 +69,20 @@ const UserLogin = () => {
       <div className="login-inside-border">
         <div className="login-form-div">
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="E"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="N"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="T"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="E"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="R"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+            <TitleLetterDisplay letter="E" />
+            <TitleLetterDisplay letter="N" />
+            <TitleLetterDisplay letter="T" />
+            <TitleLetterDisplay letter="E" />
+            <TitleLetterDisplay letter="R" />
           </div>
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="D"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="E"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="T"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="A"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="L"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="S"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+            <TitleLetterDisplay letter="D" />
+            <TitleLetterDisplay letter="E" />
+            <TitleLetterDisplay letter="T" />
+            <TitleLetterDisplay letter="A" />
+            <TitleLetterDisplay letter="I" />
+            <TitleLetterDisplay letter="L" />
+            <TitleLetterDisplay letter="S" />
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input
@@ -182,7 +110,9 @@ const UserLogin = () => {
               onChange={(e) => onChangeHandler(e)}
             />
             <input type="submit" value="Submit" className="login-form-submit" />
-            <Link to="/admin-signin" className="other-login">Are you an admin? Click to Login</Link>
+            <Link to="/admin-signin" className="other-login">
+              Are you an admin? Click to Login
+            </Link>
           </form>
         </div>
       </div>

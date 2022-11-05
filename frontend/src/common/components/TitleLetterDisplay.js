@@ -4,7 +4,7 @@ import "../stylesheets/TitleLetterDisplayCSS.css";
 const TitleLetterDisplay = (props) => {
   return (
     <div className="title-letter-display" style={props.styleProp}>
-      {props.letter}
+      <p>{props.letter}</p>
     </div>
   );
 };
