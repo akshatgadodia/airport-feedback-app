@@ -16,5 +16,12 @@ export const reducer=(state,action)=>{
             gate : action.payload.gate
         }
     }
+    if(action.type==="UserLogout")
+    {
+        //console.log(action.payload)
+        return {
+            isLoggedIn : false,
+        }
+    }
 
 }

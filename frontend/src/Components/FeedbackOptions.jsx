@@ -5,12 +5,12 @@ import { Context } from "../App";
 
 const FeedbackOptions = (props) => {
   const navigate = useNavigate();
-  const { loggedInDetails } = useContext(Context);
+  const { loggedInDetails,user } = useContext(Context);
 
   const onClickHandler = () => {
-    if (loggedInDetails.userType === "user")
+    if (loggedInDetails.userType === "user" || user.type==="user")
       navigate(`/feedback/${props.feedbackType}/1`);
-    else if (loggedInDetails.userType === "admin") {
+    else if (loggedInDetails.userType === "admin" || user.type==="admin") {
       navigate(`/adminFeedback/${props.feedbackType}`);
     }
   };

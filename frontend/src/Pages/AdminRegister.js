@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Stylesheets/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../App";
@@ -10,11 +10,18 @@ const AdminRegister = () => {
   const { error, sendRequest } = useHttpClient();
   const [adminDetails, setAdminDetails] = useState();
   const navigate = useNavigate();
-  const { dispatch } = useContext(Context);
+  const { loggedInDetails,dispatch} = useContext(Context);
 
   const onChangeHandler = (e) => {
     setAdminDetails({ ...adminDetails, [e.target.id]: e.target.value });
   };
+
+  useEffect(()=>{
+    if(loggedInDetails.userType)
+    {
+      navigate("/home")
+    }
+  },[loggedInDetails])
 
   const handleForm = async (event) => {
     event.preventDefault();
@@ -35,6 +42,7 @@ const AdminRegister = () => {
           type: "UserLogin",
           payload: { type: "admin" },
         });
+        localStorage.setItem('UserName',JSON.stringify({ type: "admin" }));
         setAdminDetails({});
         navigate("/home");
       }

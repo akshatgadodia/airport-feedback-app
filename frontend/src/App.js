@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import Footer from "./Components/Footer";
 import Login from "./Pages/Login";
@@ -12,15 +12,28 @@ import AdminLogin from "./Pages/AdminLogin";
 import AdminRegister from "./Pages/AdminRegister";
 import AdminFeedbackPage from "./Pages/AdminFeedbackPage";
 import FeedbackDataDisplayCard from './Components/FeedbackDataDisplayCard';
+import { useState } from "react";
 export const Context=React.createContext()
 
 
 function App() {
-    
+const [user,setuser]=useState({})
 const [loggedInDetails,dispatch]=useReducer(reducer,initialLoggedInDetails)
+useEffect(()=>{
+  console.log(localStorage.getItem("UserName"));
+  const u=JSON.parse(localStorage.getItem("UserName"))
+  if(u)
+  {
+    setuser(u)
+    dispatch({
+      type: "UserLogin",
+      payload:u,
+    });
+  }
+},[])
   return (
     <BrowserRouter>
-      <Context.Provider value={{loggedInDetails,dispatch}}>
+      <Context.Provider value={{loggedInDetails,dispatch,user,setuser}}>
         <NavigationBar/>
           <Routes>
             <Route path="/" element={<Login />}/>

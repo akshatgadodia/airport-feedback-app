@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Stylesheets/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../App";
@@ -10,11 +10,18 @@ const Login = () => {
   const { error, sendRequest } = useHttpClient();
   const [userDetails, setUserDetails] = useState();
   const navigate = useNavigate();
-  const { dispatch } = useContext(Context);
-
+  const { loggedInDetails,dispatch} = useContext(Context);
   const onChangeHandler = (e) => {
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
   };
+  useEffect(()=>{
+    console.log(!{});
+    console.log(loggedInDetails.userType!=="");
+    if(loggedInDetails.userType)
+    {
+      navigate("/home")
+    }
+  },[loggedInDetails])
 
   const handleForm = async (event) => {
     event.preventDefault();
@@ -39,6 +46,11 @@ const Login = () => {
             gate: data.data.gate,
           },
         });
+        localStorage.setItem('UserName',JSON.stringify({
+          type: "user",
+          flightNumber: data.data.flightNumber,
+          gate: data.data.gate,
+        }));
         setUserDetails({});
         navigate("/home");
       }

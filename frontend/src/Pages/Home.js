@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./Stylesheets/Home.css";
 import image from "../Images/pexels-martin-dickson-2366581.jpg";
+import { Context } from "../App";
+import { useNavigate } from "react-router-dom";
 function Home() {
+  const navigate = useNavigate();
+  const { loggedInDetails} = useContext(Context);
+  useEffect(()=>{
+    console.log(loggedInDetails.userType==="");
+      if(!loggedInDetails.userType)
+      {
+        navigate("/")
+      }
+    },[loggedInDetails])
   return (
     <div className="home">
       <div>
