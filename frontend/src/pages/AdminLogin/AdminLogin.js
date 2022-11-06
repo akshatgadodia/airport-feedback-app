@@ -62,16 +62,18 @@ const AdminLogin = () => {
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input
-              type="text"
+              type="email"
               id="email"
               placeholder="E-Mail"
               onChange={(e) => onChangeHandler(e)}
+              required
             />
             <input
               type="password"
               id="password"
               placeholder="Password"
               onChange={(e) => onChangeHandler(e)}
+              required
             />
             <input type="submit" value="SIGNIN" className="login-form-submit" />
             <Link to="/admin-signup" className="other-login">

@@ -84,24 +84,28 @@ const UserLogin = () => {
               id="name"
               placeholder="Name"
               onChange={(e) => onChangeHandler(e)}
+              required
             />
             <input
-              type="text"
+              type="email"
               id="email"
               placeholder="E-Mail"
               onChange={(e) => onChangeHandler(e)}
+              required
             />
             <input
-              type="text"
+              type="number"
               id="mobileNumber"
               placeholder="Mobile Number"
               onChange={(e) => onChangeHandler(e)}
+              required
             />
             <input
               type="text"
               id="pnr"
               placeholder="PNR"
               onChange={(e) => onChangeHandler(e)}
+              required
             />
             <input type="submit" value="Submit" className="login-form-submit" />
             <Link to="/admin-signin" className="other-login">
