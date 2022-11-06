@@ -26,13 +26,13 @@ const AdminLogin = () => {
     try {
       await sendRequest("/admin/signin", "POST", JSON.stringify(adminDetails), {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       });
       if (!error) {
         Swal.fire("Welcome to Airport", "", "success");
         dispatch({
           type: "UserLogin",
-          payload: { type: "admin" },
+          payload: { type: "admin" }
         });
         localStorage.setItem("UserName", JSON.stringify({ type: "admin" }));
         setAdminDetails({});
@@ -45,91 +45,20 @@ const AdminLogin = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/login-page-background-03.jpg')",
+        backgroundImage: "url('Images/login-page-background-03.jpg')"
       }}
     >
       <div className="login-inside-border">
         <div className="login-form-div">
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="A"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="D"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="M"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="M"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+          {['A','D','M','I','N'].map((letter,idx)=>{
+            return(<TitleLetterDisplay key={idx} letter={letter} />)
+          })}
           </div>
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="S"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="G"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="N"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="N"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+          {['S','I','G','N','I','N'].map((letter,idx)=>{
+            return(<TitleLetterDisplay key={idx} letter={letter} />)
+          })}
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input
@@ -145,7 +74,7 @@ const AdminLogin = () => {
               onChange={(e) => onChangeHandler(e)}
             />
             <input type="submit" value="SIGNIN" className="login-form-submit" />
-            <Link to="/admin-signup">
+            <Link to="/admin-signup" className="other-login">
               Don't have an account? Click to Register
             </Link>
           </form>

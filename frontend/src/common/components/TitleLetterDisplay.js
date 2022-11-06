@@ -3,8 +3,8 @@ import "../stylesheets/TitleLetterDisplayCSS.css";
 
 const TitleLetterDisplay = (props) => {
   return (
-    <div className="title-letter-display" style={props.styleProp}>
-      {props.letter}
+    <div className="title-letter-display">
+      <p>{props.letter}</p>
     </div>
   );
 };

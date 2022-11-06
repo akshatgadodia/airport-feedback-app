@@ -60,100 +60,23 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="login"
-    style={{
-      backgroundImage: "url('Images/login-page-background-03.jpg')",
-    }}
+    <div
+      className="login"
+      style={{
+        backgroundImage: "url('Images/login-page-background-03.jpg')",
+      }}
     >
       <div className="login-inside-border">
         <div className="login-form-div">
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="E"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="N"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="T"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="E"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="R"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+          {['E','N','T','E','R'].map((letter,idx)=>{
+            return(<TitleLetterDisplay key={idx} letter={letter} />)
+          })}
           </div>
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="D"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="E"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="T"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="A"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="L"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="S"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+          {['D','E','T','A','I','L','S'].map((letter,idx)=>{
+            return(<TitleLetterDisplay key={idx} letter={letter} />)
+          })}
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input
@@ -181,7 +104,9 @@ const UserLogin = () => {
               onChange={(e) => onChangeHandler(e)}
             />
             <input type="submit" value="Submit" className="login-form-submit" />
-            <Link to="/admin-signin">Are you an admin? Click to Login</Link>
+            <Link to="/admin-signin" className="other-login">
+              Are you an admin? Click to Login
+            </Link>
           </form>
         </div>
       </div>

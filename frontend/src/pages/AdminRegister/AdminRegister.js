@@ -28,13 +28,13 @@ const AdminRegister = () => {
     try {
       await sendRequest("/admin/signup", "POST", JSON.stringify(adminDetails), {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       });
       if (!error) {
         Swal.fire("Welcome to Airport", "", "success");
         dispatch({
           type: "UserLogin",
-          payload: { type: "admin" },
+          payload: { type: "admin" }
         });
         localStorage.setItem("UserName", JSON.stringify({ type: "admin" }));
         setAdminDetails({});
@@ -47,91 +47,20 @@ const AdminRegister = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/login-page-background-03.jpg')",
+        backgroundImage: "url('Images/login-page-background-03.jpg')"
       }}
     >
       <div className="login-inside-border">
         <div className="login-form-div">
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="A"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="D"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="M"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="N"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+            {["A", "D", "M", "I", "N"].map((letter, idx) => {
+              return <TitleLetterDisplay key={idx} letter={letter} />;
+            })}
           </div>
           <div className="login-head">
-            <TitleLetterDisplay
-              letter="S"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="I"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="G"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="N"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="U"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
-            <TitleLetterDisplay
-              letter="P"
-              styleProp={{
-                color: "white",
-                backgroundColor: "rgba(255, 255, 255, 0.25)",
-              }}
-            />
+            {["S", "I", "G", "N", "U", "P"].map((letter, idx) => {
+              return <TitleLetterDisplay key={idx} letter={letter} />;
+            })}
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input
@@ -153,7 +82,7 @@ const AdminRegister = () => {
               onChange={(e) => onChangeHandler(e)}
             />
             <input type="submit" value="SIGNUP" className="login-form-submit" />
-            <Link to="/admin-signin">
+            <Link to="/admin-signin" className="other-login">
               Already have an account? Click to Login
             </Link>
           </form>
