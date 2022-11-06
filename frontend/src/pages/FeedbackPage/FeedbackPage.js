@@ -8,7 +8,7 @@ function FeedbackPage() {
     { src: "/Images/airline.jpg", title: "Airline", feedbackType: "airline" },
     { src: "/Images/checkin.jpg", title: "Check-in", feedbackType: "checkin" },
     { src: "/Images/lounge.jpg", title: "Lounge", feedbackType: "lounge" },
-    { src: "/Images/store.jpg", title: "Store", feedbackType: "store" },
+    { src: "/Images/stores.jpg", title: "Store", feedbackType: "store" },
     { src: "/Images/helpdesk.jpg", title: "Help Desk", styles: { objectPosition: "top left" }, feedbackType: "helpdesk" },
     { src: "/Images/washroom.jpg", title: "Washroom", styles: { objectPosition: "center" },feedbackType: "washroom" },
   ];
