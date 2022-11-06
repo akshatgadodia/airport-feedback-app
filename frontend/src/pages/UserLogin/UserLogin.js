@@ -32,7 +32,7 @@ const UserLogin = () => {
         JSON.stringify(userDetails),
         {
           Accept: "application/json",
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         }
       );
       if (!error) {
@@ -42,15 +42,15 @@ const UserLogin = () => {
           payload: {
             type: "user",
             flightNumber: data.data.flightNumber,
-            gate: data.data.gate,
-          },
+            gate: data.data.gate
+          }
         });
         localStorage.setItem(
           "UserName",
           JSON.stringify({
             type: "user",
             flightNumber: data.data.flightNumber,
-            gate: data.data.gate,
+            gate: data.data.gate
           })
         );
         setUserDetails({});
@@ -63,20 +63,20 @@ const UserLogin = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/login-page-background-03.jpg')",
+        backgroundImage: "url('Images/login-page-background-03.jpg')"
       }}
     >
       <div className="login-inside-border">
         <div className="login-form-div">
           <div className="login-head">
-          {['E','N','T','E','R'].map((letter,idx)=>{
-            return(<TitleLetterDisplay key={idx} letter={letter} />)
-          })}
+            {["E", "N", "T", "E", "R"].map((letter, idx) => {
+              return <TitleLetterDisplay key={idx} letter={letter} />;
+            })}
           </div>
           <div className="login-head">
-          {['D','E','T','A','I','L','S'].map((letter,idx)=>{
-            return(<TitleLetterDisplay key={idx} letter={letter} />)
-          })}
+            {["D", "E", "T", "A", "I", "L", "S"].map((letter, idx) => {
+              return <TitleLetterDisplay key={idx} letter={letter} />;
+            })}
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input

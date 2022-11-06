@@ -34,7 +34,7 @@ const NavigationBar = () => {
             {onHomePage ? "Home" : "Feedback"}
           </button>
         )}
-        {loggedInDetails.userType === "admin" && (
+        {loggedInDetails.userType && (
           <button onClick={LogoutHandler}>Logout</button>
         )}
       </div>

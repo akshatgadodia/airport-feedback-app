@@ -51,14 +51,14 @@ const AdminLogin = () => {
       <div className="login-inside-border">
         <div className="login-form-div">
           <div className="login-head">
-          {['A','D','M','I','N'].map((letter,idx)=>{
-            return(<TitleLetterDisplay key={idx} letter={letter} />)
-          })}
+            {["A", "D", "M", "I", "N"].map((letter, idx) => {
+              return <TitleLetterDisplay key={idx} letter={letter} />;
+            })}
           </div>
           <div className="login-head">
-          {['S','I','G','N','I','N'].map((letter,idx)=>{
-            return(<TitleLetterDisplay key={idx} letter={letter} />)
-          })}
+            {["S", "I", "G", "N", "I", "N"].map((letter, idx) => {
+              return <TitleLetterDisplay key={idx} letter={letter} />;
+            })}
           </div>
           <form onSubmit={handleForm} className="login-form">
             <input
