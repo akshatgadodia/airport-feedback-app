@@ -7,9 +7,9 @@ const NavigationBar = () => {
   const { loggedInDetails, dispatch } = useContext(Context);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(loggedInDetails)
+  console.log(loggedInDetails);
   const onButtonClickHandler = () => {
-    if (location.pathname==='/home') {
+    if (location.pathname === "/home") {
       navigate("/feedback");
     } else {
       navigate("/home");
@@ -22,13 +22,14 @@ const NavigationBar = () => {
       type: "UserLogout",
     });
   };
+
   return (
     <div className={loggedInDetails.isLoggedIn ? "navbar" : "navbar-hidden"}>
       <i className="fa-sharp fa-solid fa-plane-departure"></i>
       <div className="navdiv">
         {loggedInDetails.userType && (
           <button onClick={onButtonClickHandler}>
-            {location.pathname!=='/home' ? "Home" : "Feedback"}
+            {location.pathname !== "/home" ? "Home" : "Feedback"}
           </button>
         )}
         {loggedInDetails.userType && (

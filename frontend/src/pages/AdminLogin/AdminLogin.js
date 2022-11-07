@@ -24,16 +24,21 @@ const AdminLogin = () => {
     event.preventDefault();
     // console.log(JSON.stringify(adminDetails));
     try {
-      const data = await sendRequest("/admin/signin", "POST", JSON.stringify(adminDetails), {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      });
-      console.log(data)
+      const data = await sendRequest(
+        "/admin/signin",
+        "POST",
+        JSON.stringify(adminDetails),
+        {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }
+      );
+      console.log(data);
       if (!error) {
         Swal.fire("Welcome to Airport", "", "success");
         dispatch({
           type: "UserLogin",
-          payload: { type: "admin", userName:data.data.name }
+          payload: { type: "admin", userName: data.data.name },
         });
         localStorage.setItem("UserName", JSON.stringify({ type: "admin" }));
         setAdminDetails({});
@@ -46,7 +51,7 @@ const AdminLogin = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/login-page-background-03.jpg')"
+        backgroundImage: "url('Images/login-page-background-03.jpg')",
       }}
     >
       <div className="login-inside-border">
@@ -57,26 +62,28 @@ const AdminLogin = () => {
             })}
           </div>
           <div className="login-head">
-            {["S", "I", "G", "N", "I", "N"].map((letter, idx) => {
+            {["L", "O", "G", "I", "N"].map((letter, idx) => {
               return <TitleLetterDisplay key={idx} letter={letter} />;
             })}
           </div>
           <form onSubmit={handleForm} className="login-form">
-            <input
-              type="email"
-              id="email"
-              placeholder="E-Mail"
-              onChange={(e) => onChangeHandler(e)}
-              required
-            />
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              onChange={(e) => onChangeHandler(e)}
-              required
-            />
-            <input type="submit" value="SIGNIN" className="login-form-submit" />
+            <div className="login-form-input">
+              <input
+                type="email"
+                id="email"
+                placeholder="E-Mail"
+                onChange={(e) => onChangeHandler(e)}
+                required
+              />
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                onChange={(e) => onChangeHandler(e)}
+                required
+              />
+            </div>
+            <input type="submit" value="Login" className="login-form-submit" />
             <Link to="/admin-signup" className="other-login">
               Don't have an account? Click to Register
             </Link>

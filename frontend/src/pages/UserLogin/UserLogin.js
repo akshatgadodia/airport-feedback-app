@@ -32,7 +32,7 @@ const UserLogin = () => {
         JSON.stringify(userDetails),
         {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         }
       );
       if (!error) {
@@ -43,15 +43,15 @@ const UserLogin = () => {
             type: "user",
             flightNumber: data.data.flightNumber,
             gate: data.data.gate,
-            userName : userDetails.name
-          }
+            userName: userDetails.name,
+          },
         });
         localStorage.setItem(
           "UserName",
           JSON.stringify({
             type: "user",
             flightNumber: data.data.flightNumber,
-            gate: data.data.gate
+            gate: data.data.gate,
           })
         );
         setUserDetails({});
@@ -64,7 +64,7 @@ const UserLogin = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/login-page-background-03.jpg')"
+        backgroundImage: "url('Images/login-page-background-03.jpg')",
       }}
     >
       <div className="login-inside-border">
@@ -80,6 +80,7 @@ const UserLogin = () => {
             })}
           </div>
           <form onSubmit={handleForm} className="login-form">
+            <div className="login-form-input">
             <input
               type="text"
               id="name"
@@ -108,6 +109,7 @@ const UserLogin = () => {
               onChange={(e) => onChangeHandler(e)}
               required
             />
+            </div>
             <input type="submit" value="Submit" className="login-form-submit" />
             <Link to="/admin-signin" className="other-login">
               Are you an admin? Click to Login

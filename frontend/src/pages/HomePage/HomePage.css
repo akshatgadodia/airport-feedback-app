@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #ededed;
 }
 .home div{
     width: 50%;

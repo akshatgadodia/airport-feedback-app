@@ -27,7 +27,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffffff33;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   color: white;
@@ -48,12 +48,22 @@
 }
 
 .login-form {
-  padding-top: 25px;
+  padding: 10px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  width: 100%;
+}
+
+.login-form-input{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 260px;
+  gap: 20px;
 }
 
 .login-form input {
@@ -63,7 +73,6 @@
   width: 320px;
   font-size: large;
   padding-left: 1rem;
-  margin-bottom: 20px;
   color: #361413;
   font-weight: 600;
   background: #ffffff;
