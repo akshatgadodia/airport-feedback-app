@@ -1,5 +1,6 @@
 export const initialLoggedInDetails={
     isLoggedIn : false,
+    userName : "",
     userType : "",
     flightNumber :"",
     gate : "" 
@@ -13,7 +14,8 @@ export const reducer=(state,action)=>{
             isLoggedIn : true,
             userType : action.payload.type,
             flightNumber : action.payload.flightNumber,
-            gate : action.payload.gate
+            gate : action.payload.gate,
+            userName : action.payload.userName
         }
     }
     if(action.type==="UserLogout")

@@ -27,12 +27,13 @@ export const useHttpClient = () => {
         );
         // console.log(responseData);
         if (!responseData.success) {
+          console.log(responseData)
           throw new Error(responseData.error);
         }
         setIsLoading(false);
         return responseData;
       } catch (err) {
-        // console.log(err)
+        console.log(err)
         Swal.fire({
           icon: "error",
           title: "Oops...",

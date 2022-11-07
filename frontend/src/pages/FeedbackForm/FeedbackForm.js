@@ -39,7 +39,6 @@ const FeedbackForm = () => {
   };
   const onClickHandler = async () => {
     if (data.ratingType === "stars" && !rating) {
-      //alert("Please select a rating");
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -48,12 +47,21 @@ const FeedbackForm = () => {
       return null;
     }
     if (data.ratingType === "dropdown" && !feedbackData.name) {
-      //alert("Please select a rating");
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: `Please select a ${feedbackType}`,
       });
+      return null;
+    }
+    if (data.ratingType === "text" && !feedbackData.feedbackMessage) {
+      /*Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Please enter a message, if not enter NA`,
+      });*/
+      setRating(0);
+      setFeedbackData({ ...feedbackData, feedbackMessage: "NA" });
       return null;
     }
     if (data.next) {

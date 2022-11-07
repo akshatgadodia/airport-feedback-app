@@ -42,7 +42,8 @@ const UserLogin = () => {
           payload: {
             type: "user",
             flightNumber: data.data.flightNumber,
-            gate: data.data.gate
+            gate: data.data.gate,
+            userName : userDetails.name
           }
         });
         localStorage.setItem(

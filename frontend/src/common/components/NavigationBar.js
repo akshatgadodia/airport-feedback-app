@@ -1,18 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "../stylesheets/NavigationBar.css";
 import { Context } from "../../App";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NavigationBar = () => {
   const { loggedInDetails, dispatch } = useContext(Context);
-  const [onHomePage, setOnHomePage] = useState(false);
-
+  const location = useLocation();
   const navigate = useNavigate();
-  //console.log(loggedInDetails);
+  console.log(loggedInDetails)
   const onButtonClickHandler = () => {
-    setOnHomePage(!onHomePage);
-    // console.log(onHomePage);
-    if (!onHomePage) {
+    if (location.pathname==='/home') {
       navigate("/feedback");
     } else {
       navigate("/home");
@@ -31,7 +28,7 @@ const NavigationBar = () => {
       <div className="navdiv">
         {loggedInDetails.userType && (
           <button onClick={onButtonClickHandler}>
-            {onHomePage ? "Home" : "Feedback"}
+            {location.pathname!=='/home' ? "Home" : "Feedback"}
           </button>
         )}
         {loggedInDetails.userType && (

@@ -24,15 +24,16 @@ const AdminLogin = () => {
     event.preventDefault();
     // console.log(JSON.stringify(adminDetails));
     try {
-      await sendRequest("/admin/signin", "POST", JSON.stringify(adminDetails), {
+      const data = await sendRequest("/admin/signin", "POST", JSON.stringify(adminDetails), {
         Accept: "application/json",
         "Content-Type": "application/json"
       });
+      console.log(data)
       if (!error) {
         Swal.fire("Welcome to Airport", "", "success");
         dispatch({
           type: "UserLogin",
-          payload: { type: "admin" }
+          payload: { type: "admin", userName:data.data.name }
         });
         localStorage.setItem("UserName", JSON.stringify({ type: "admin" }));
         setAdminDetails({});
