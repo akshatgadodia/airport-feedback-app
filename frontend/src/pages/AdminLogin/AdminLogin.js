@@ -51,7 +51,7 @@ const AdminLogin = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/login-page-background-03.jpg')",
+        backgroundImage: "url('Images/airport-1.jpg')"
       }}
     >
       <div className="login-inside-border">
@@ -67,7 +67,7 @@ const AdminLogin = () => {
             })}
           </div>
           <form onSubmit={handleForm} className="login-form">
-            <div className="login-form-input">
+            <div className="login-admin-input">
               <input
                 type="email"
                 id="email"

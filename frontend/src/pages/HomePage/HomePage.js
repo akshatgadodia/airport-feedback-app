@@ -14,16 +14,18 @@ function HomePage() {
     }
   }, [loggedInDetails]);
   return (
-    <div className="home">
-      <div className="home-inner-div">
-        <div className="home-first-div-content">
-          <h1>Welcome {loggedInDetails.userName}</h1>
-        </div>
-        <div className="home-first-div-image">
-          <img src="/Images/pexels-martin-dickson-2366581.jpg" alt="home"></img>
-        </div>
-      </div>
-      <div className="home-second-div">{loggedInDetails.userType === "user" && <FlightDetailsPage />}</div>
+    <div
+      className="homepage-main-div"
+      style={{
+        backgroundImage:
+          loggedInDetails.userType === "user"
+            ? "url('Images/airport-2.jpg')"
+            : "url('Images/airport-4.jpg')",
+      }}
+    >
+      <h1>Welcome {loggedInDetails.userName}</h1>
+
+      <div>{loggedInDetails.userType === "user" && <FlightDetailsPage />}</div>
     </div>
   );
 }
