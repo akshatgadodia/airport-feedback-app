@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./FeedbackPage.css";
-// import FeedbackOptions from "../../common/components/FeedbackOptions";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../App";
 
 function FeedbackPage() {
   const navigate = useNavigate();
+  const { loggedInDetails, user } = useContext(Context);
 
-  function onLinkClick(link) {
-    // further processing happens here
-    navigate(link);
+  function onLinkClick(type) {
+    if (loggedInDetails.userType === "user" || user.type === "user")
+      navigate(`/feedback/${type}/1`);
+    else if (loggedInDetails.userType === "admin" || user.type === "admin") {
+      navigate(`/adminFeedback/${type}`);
+    }
   }
 
   return (
     <div className="feedback-page-main-div">
       <div className="feedback-page-inside-div">
         <a
-          href="/feedback/foodcourt/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/foodcourt/1");
+            onLinkClick("foodcourt");
           }}
         >
           <div
@@ -32,10 +36,10 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/feedback/checkin/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/checkin/1");
+            onLinkClick("checkin");
           }}
         >
           <div
@@ -49,10 +53,10 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/feedback/helpdesk/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/helpdesk/1");
+            onLinkClick("helpdesk");
           }}
         >
           <div
@@ -67,10 +71,10 @@ function FeedbackPage() {
       </div>
       <div className="feedback-page-inside-div">
         <a
-          href="/feedback/airline/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/airline/1");
+            onLinkClick("airline");
           }}
         >
           <div
@@ -84,10 +88,10 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/feedback/lounge/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/lounge/1");
+            onLinkClick("lounge");
           }}
         >
           <div
@@ -101,10 +105,10 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/feedback/store/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/store/1");
+            onLinkClick("store");
           }}
         >
           <div
@@ -118,10 +122,10 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/feedback/washroom/1"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
-            onLinkClick("/feedback/washroom/1");
+            onLinkClick("washroom");
           }}
         >
           <div
@@ -139,27 +143,3 @@ function FeedbackPage() {
 }
 
 export default FeedbackPage;
-
-// const data = [
-//   { src: "/Images/food.jpg", title: "Food", feedbackType: "foodcourt" },
-//   { src: "/Images/airline.jpg", title: "Airline", feedbackType: "airline" },
-//   { src: "/Images/checkin.jpg", title: "Check-in", feedbackType: "checkin" },
-//   { src: "/Images/lounge.jpg", title: "Lounge", feedbackType: "lounge" },
-//   { src: "/Images/stores.jpg", title: "Store", feedbackType: "store" },
-//   { src: "/Images/helpdesk.jpg", title: "Help Desk", styles: { objectPosition: "top left" }, feedbackType: "helpdesk" },
-//   { src: "/Images/washroom.jpg", title: "Washroom", styles: { objectPosition: "center" },feedbackType: "washroom" },
-// ];
-
-// <div className="departments">
-// {data.map((data, idx) => {
-//   return (
-//     <FeedbackOptions
-//       key={idx}
-//       src={data.src}
-//       title={data.title}
-//       styles={data.styles}
-//       feedbackType={data.feedbackType}
-//     />
-//   );
-// })}
-// </div>

@@ -16,7 +16,7 @@ import AdminFeedback from "./pages/AdminFeedback/AdminFeedback";
 export const Context = React.createContext();
 
 function App() {
-  const [user, setuser] = useState({});
+  const [user, setUser] = useState({});
   const [loggedInDetails, dispatch] = useReducer(
     reducer,
     initialLoggedInDetails
@@ -25,7 +25,7 @@ function App() {
     console.log(localStorage.getItem("UserName"));
     const loginData = JSON.parse(localStorage.getItem("UserName"));
     if (loginData) {
-      setuser(loginData);
+      setUser(loginData);
       dispatch({
         type: "UserLogin",
         payload: loginData,
@@ -34,7 +34,7 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <Context.Provider value={{ loggedInDetails, dispatch, user, setuser }}>
+      <Context.Provider value={{ loggedInDetails, dispatch, user, setUser }}>
         <NavigationBar />
         <Routes>
           <Route path="/" element={<UserLogin />} />
@@ -51,7 +51,7 @@ function App() {
           />
           <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
-        {/* <FooterComponent /> */}
+        <FooterComponent />
       </Context.Provider>
     </BrowserRouter>
   );

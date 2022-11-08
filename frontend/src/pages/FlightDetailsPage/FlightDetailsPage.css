@@ -23,10 +23,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.flight-details-ticket-location h1, .flight-details-ticket-time h3, .flight-details-ticket-time h2{
-    color: white;
-}
-.flight-details-ticket-time{
     text-align: center;
+}
+.flight-details-ticket-location h1{
+    color: white;
 }

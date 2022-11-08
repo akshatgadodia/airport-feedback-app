@@ -6,7 +6,7 @@ import axios from "axios";
 const FlightDetailsPage = () => {
   const { loggedInDetails } = useContext(Context);
   const [flightData, setFlightData] = useState({});
-  const [time, setTime] = useState(0);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,27 +23,19 @@ const FlightDetailsPage = () => {
         const data = await axios.request(options);
         //console.log(data.data[0]);
         if (data.data[0]) {
+          var dept = new Date(data.data[0].departure.scheduledTimeUtc).toLocaleString();
+          var arr = new Date(data.data[0].arrival.scheduledTimeUtc).toLocaleString();
           const requiredData = {
             arrivalAirportName: data.data[0].arrival.airport.name + " Airport",
-            departureAirportName:
-              data.data[0].departure.airport.name + " Airport",
+            departureAirportName: data.data[0].departure.airport.name + " Airport",
             airlineName: data.data[0].airline.name,
-            departureTimeUTC: data.data[0].departure.scheduledTimeUtc,
-            arrivalTimeUTC: data.data[0].arrival.scheduledTimeUtc,
+            departureTime: dept,
+            arrivalTime: arr,
             flightNumber: data.data[0].number,
             flightStatus: data.data[0].status,
             aircraftModel: data.data[0].aircraft.model
           };
           setFlightData(requiredData);
-          var arrivalDateTime = new Date(flightData.arrivalTimeUTC);
-          var cuurentDateTime = new Date();
-          var differenceInTime =
-            (arrivalDateTime.getTime() - cuurentDateTime.getTime()) / 1000;
-          if (differenceInTime <= 0) {
-            setTime(0);
-          } else {
-            setTime(differenceInTime);
-          }
         }
       } catch (err) {
         console.log(err);
@@ -53,11 +45,6 @@ const FlightDetailsPage = () => {
       fetchData();
     }
   }, [loggedInDetails]);
-
-  const getTime = () => {
-    if (time) return new Date(time).toISOString().slice(11, 19);
-    else return new Date(0).toISOString().slice(11, 19);
-  };
 
   return (
     <div className="flight-details-page">
@@ -83,9 +70,15 @@ const FlightDetailsPage = () => {
         <div className="flight-details-ticket-location">
           <h1>{`${flightData.departureAirportName} -> ${flightData.arrivalAirportName}`}</h1>
         </div>
-        <div className="flight-details-ticket-time">
-          <h3>Estimated Time Left To Arrive</h3> <br />
-          <h2>{getTime(time)}</h2>
+        <div className="flight-details-ticket-header">
+          <div>
+            <span>Departure</span>
+            <p>{flightData.departureTime}</p>
+          </div>
+          <div>
+            <span>Arrival</span>
+            <p>{flightData.arrivalTime}</p>
+          </div>
         </div>
       </div>
     </div>
