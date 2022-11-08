@@ -4,22 +4,29 @@
     max-width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: #ededed;
 }
-.home div{
+.home-inner-div{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: calc(100vh - 70px);
+}
+.home-first-div-content{
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.home img{
+.home-first-div-image img{
     height: 100%;
     width: 100%;
     background-color: blue;
 }
-.home h1{
+.home-first-div-content h1{
     font-size: 60px;
     white-space: no-wrap;
     font-weight: 500;

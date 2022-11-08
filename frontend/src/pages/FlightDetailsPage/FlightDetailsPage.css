@@ -1,48 +1,32 @@
-.admin-feedback-page{
-    text-align: center;
-    width: 100%;
+.flight-details-page{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    align-items: center;
+    padding: 1vh 1vw;
+    height: 100vh;
+    width: 100vw;
 }
-.admin-feedback-page-title{
-    padding-top: 2vh;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    font-size: 3rem;
-}
-.admin-feedback-page-subtitle{
-    margin-top: 0;
-    padding-top: 0;
-    font-size: 1.5rem;
-    padding-bottom: 5vh;
-}
-.admin-feedback-page-display{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-.admin-feedback-page-accordion{
-    margin: 0 !important;
-    padding: 0 !important; 
+.flight-details-ticket{
+    padding: 4vh 1vw;
     width: 70%;
-    margin-bottom: 5vh !important;
-}
-.admin-feedback-page-panel{
-    padding: 0 !important;
-    margin: 0 !important;
-}
-.admin-feedback-page-list{
-    padding: 0 !important;
-    margin: 0 !important;
-}
-.admin-feedback-page-dropdown-display{
+    background-color: black;
+    color: white;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border: 2px solid black;
-    margin : 10px;
-    border-radius: 10px;
+}
+.flight-details-ticket-header, .flight-details-ticket-location{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.flight-details-ticket-location h1, .flight-details-ticket-time h3, .flight-details-ticket-time h2{
+    color: white;
+}
+.flight-details-ticket-time{
+    text-align: center;
 }

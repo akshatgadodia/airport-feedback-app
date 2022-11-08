@@ -1,87 +1,139 @@
 import React from "react";
 import "./FeedbackPage.css";
 // import FeedbackOptions from "../../common/components/FeedbackOptions";
-import { Link } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 
 function FeedbackPage() {
+  const navigate = useNavigate();
+
+  function onLinkClick(link) {
+    // further processing happens here
+    navigate(link);
+  }
+
   return (
     <div className="feedback-page-main-div">
-      <Link href="/feedback/foodcourt/1">
-        <div
-          className="feedback-page-elements-div-2"
-          style={{
-            backgroundImage: "url('Images/FeedbackPage/food-court.jpg')",
+      <div className="feedback-page-inside-div">
+        <a
+          href="/feedback/foodcourt/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/foodcourt/1");
           }}
         >
-          <p>Food Court</p>
-        </div>
-      </Link>
+          <div
+            className="feedback-page-elements-div-2"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/food-court.jpg')"
+            }}
+          >
+            <p>Food Court</p>
+          </div>
+        </a>
 
-      <Link href="/feedback/checkin/1">    
-      <div
-        className="feedback-page-elements-div-2"
-        style={{
-          backgroundImage: "url('Images/FeedbackPage/check-in.jpg')",
-        }}
-      >
-        <p>Check In</p>
-      </div>
-      </Link>
+        <a
+          href="/feedback/checkin/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/checkin/1");
+          }}
+        >
+          <div
+            className="feedback-page-elements-div-2"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/check-in.jpg')"
+            }}
+          >
+            <p>Check In</p>
+          </div>
+        </a>
 
-      <Link href="/feedback/helpdesk/1">
-      <div
-        className="feedback-page-elements-div-2"
-        style={{
-          backgroundImage: "url('Images/FeedbackPage/help-desk.jpeg')",
-        }}
-      >
-        <p>Help Desk</p>
+        <a
+          href="/feedback/helpdesk/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/helpdesk/1");
+          }}
+        >
+          <div
+            className="feedback-page-elements-div-2"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/help-desk.jpeg')"
+            }}
+          >
+            <p>Help Desk</p>
+          </div>
+        </a>
       </div>
-      </Link>
+      <div className="feedback-page-inside-div">
+        <a
+          href="/feedback/airline/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/airline/1");
+          }}
+        >
+          <div
+            className="feedback-page-elements-div-1"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/airline.jpg')"
+            }}
+          >
+            <p>Airline</p>
+          </div>
+        </a>
 
-      <Link href="/feedback/airline/1">
-      <div
-        className="feedback-page-elements-div-1"
-        style={{
-          backgroundImage: "url('Images/FeedbackPage/airline.jpg')",
-        }}
-      >
-        <p>Airline</p>
-      </div>
-      </Link>
+        <a
+          href="/feedback/lounge/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/lounge/1");
+          }}
+        >
+          <div
+            className="feedback-page-elements-div-1"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/lounge.jpg')"
+            }}
+          >
+            <p>Lounge</p>
+          </div>
+        </a>
 
-      <Link href="/feedback/lounge/1">
-      <div
-        className="feedback-page-elements-div-1"
-        style={{
-          backgroundImage: "url('Images/FeedbackPage/lounge.jpg')",
-        }}
-      >
-        <p>Lounge</p>
-      </div>
-      </Link>  
+        <a
+          href="/feedback/store/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/store/1");
+          }}
+        >
+          <div
+            className="feedback-page-elements-div-1"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/store.jpg')"
+            }}
+          >
+            <p>Store</p>
+          </div>
+        </a>
 
-      <Link href="/feedback/store/1"> 
-      <div
-        className="feedback-page-elements-div-1"
-        style={{
-          backgroundImage: "url('Images/FeedbackPage/store.jpg')",
-        }}
-      >
-        <p>Store</p>
+        <a
+          href="/feedback/washroom/1"
+          onClick={(e) => {
+            e.preventDefault();
+            onLinkClick("/feedback/washroom/1");
+          }}
+        >
+          <div
+            className="feedback-page-elements-div-1"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/washroom.jpg')"
+            }}
+          >
+            <p>Washroom</p>
+          </div>
+        </a>
       </div>
-      </Link>
-
-      <Link href="/feedback/washroom/1">
-      <div
-        className="feedback-page-elements-div-1"
-        style={{
-          backgroundImage: "url('Images/FeedbackPage/washroom.jpg')",
-        }}
-      >
-        <p>Washroom</p>
-      </div>
-      </Link>
     </div>
   );
 }
