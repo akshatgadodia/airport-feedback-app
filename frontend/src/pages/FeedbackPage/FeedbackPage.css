@@ -1,22 +1,25 @@
 .feedback-page-main-div {
   height: calc(100vh - 70px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-wrap: wrap;
-  background-color: black;
-}
-.feedback-page-inside-div{
-  display: flex;
-}
-.feedback-page-elements-div-1 {
-  height: calc(50vh - 35px);
-  width: 25vw;
-  background-size: 25vw calc(50vh - 35px);
-  background-repeat: no-repeat;
-  display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+}
+.feedback-page-container-div {
+  display: flex;
+  align-items: stretch;
+}
+.feedback-page-elements-div {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.elements-title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -24,63 +27,13 @@
   font-size: 50px;
   font-weight: bold;
   text-shadow: 2px 2px 5px black;
-  box-sizing: border-box;
-  border: 0.1px solid black;
+  border: 1px solid black;
 }
-
-.feedback-page-elements-div-2 {
-  height: calc(50vh - 35px);
-  width: 33.33vw;
-  background-size: 33.33vw calc(50vh - 35px);
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  color: #ffffff;
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 2px 2px 5px black;
-  box-sizing: border-box;
-  border: 0.1px solid black;
-}
-
-.feedback-page-elements-div-2 p {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  position: absolute;
-  line-height: 0;
-  height: calc(50vh - 35px);
-  width: 33.33vw;
-  margin: 0;
-  padding: 0;
-}
-
-.feedback-page-elements-div-1 p {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  position: absolute;
-  line-height: 0;
-  height: calc(50vh - 35px);
-  width: 25vw;
-  margin: 0;
-  padding: 0;
-}
-
-.feedback-page-elements-div-2 p:hover,
-.feedback-page-elements-div-1 p:hover {
+.elements-title:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.feedback-page-elements-div-2 p:active,
-.feedback-page-elements-div-1 p:active {
+.elements-title:active {
   font-size: 60px;
   background-color: rgba(0, 0, 0, 0.5);
 }

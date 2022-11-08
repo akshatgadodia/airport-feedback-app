@@ -51,7 +51,7 @@ function App() {
           />
           <Route path="/feedback" element={<FeedbackPage />} />
         </Routes>
-        <FooterComponent />
+        {/* <FooterComponent /> */}
       </Context.Provider>
     </BrowserRouter>
   );

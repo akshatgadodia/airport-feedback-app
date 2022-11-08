@@ -102,7 +102,6 @@ const FooterComponent = () => {
           </div>
         </div>
       </div>
-      <hr className="footer-hr" />
       <div className="footer-copyright">
         © {new Date().getFullYear()} Airport. All Rights Reserved.
       </div>

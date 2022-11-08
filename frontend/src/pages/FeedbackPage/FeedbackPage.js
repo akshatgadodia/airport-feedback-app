@@ -17,124 +17,132 @@ function FeedbackPage() {
 
   return (
     <div className="feedback-page-main-div">
-      <div className="feedback-page-inside-div">
+      <div style={{ flex: 1 }} className="feedback-page-container-div">
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("foodcourt");
           }}
         >
           <div
-            className="feedback-page-elements-div-2"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/food-court.jpg')"
+              backgroundImage: "url('Images/FeedbackPage/food-court.jpg')",
             }}
           >
-            <p>Food Court</p>
+            <div className="elements-title">Food Court</div>
           </div>
         </a>
 
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("checkin");
           }}
         >
           <div
-            className="feedback-page-elements-div-2"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/check-in.jpg')"
+              backgroundImage: "url('Images/FeedbackPage/check-in.jpg')",
             }}
           >
-            <p>Check In</p>
+            <div className="elements-title">Check In</div>
           </div>
         </a>
 
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("helpdesk");
           }}
         >
           <div
-            className="feedback-page-elements-div-2"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/help-desk.jpeg')"
+              backgroundImage: "url('Images/FeedbackPage/help-desk.jpeg')",
             }}
           >
-            <p>Help Desk</p>
+            <div className="elements-title">Help Desk</div>
           </div>
         </a>
       </div>
-      <div className="feedback-page-inside-div">
+
+      <div style={{ flex: 1 }} className="feedback-page-container-div">
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("airline");
           }}
         >
           <div
-            className="feedback-page-elements-div-1"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/airline.jpg')"
+              backgroundImage: "url('Images/FeedbackPage/airline.jpg')",
             }}
           >
-            <p>Airline</p>
+            <div className="elements-title">Airline</div>
           </div>
         </a>
 
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("lounge");
           }}
         >
           <div
-            className="feedback-page-elements-div-1"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/lounge.jpg')"
+              backgroundImage: "url('Images/FeedbackPage/lounge.jpg')",
             }}
           >
-            <p>Lounge</p>
+            <div className="elements-title">Lounge</div>
           </div>
         </a>
 
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("store");
           }}
         >
           <div
-            className="feedback-page-elements-div-1"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/store.jpg')"
+              backgroundImage: "url('Images/FeedbackPage/store.jpg')",
             }}
           >
-            <p>Store</p>
+            <div className="elements-title">Store</div>
           </div>
         </a>
 
         <a
           href="/"
+          style={{ flex: 1 }}
           onClick={(e) => {
             e.preventDefault();
             onLinkClick("washroom");
           }}
         >
           <div
-            className="feedback-page-elements-div-1"
+            className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/washroom.jpg')"
+              backgroundImage: "url('Images/FeedbackPage/washroom.jpg')",
             }}
           >
-            <p>Washroom</p>
+           <div className="elements-title">Washroom</div>
           </div>
         </a>
       </div>
