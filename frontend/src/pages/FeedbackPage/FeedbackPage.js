@@ -1,11 +1,12 @@
 import React from "react";
 import "./FeedbackPage.css";
 // import FeedbackOptions from "../../common/components/FeedbackOptions";
+import { Link } from 'react-router-dom';
 
 function FeedbackPage() {
   return (
     <div className="feedback-page-main-div">
-      <a href="/feedback">
+      <Link href="/feedback/foodcourt/1">
         <div
           className="feedback-page-elements-div-2"
           style={{
@@ -14,8 +15,9 @@ function FeedbackPage() {
         >
           <p>Food Court</p>
         </div>
-      </a>
+      </Link>
 
+      <Link href="/feedback/checkin/1">    
       <div
         className="feedback-page-elements-div-2"
         style={{
@@ -24,6 +26,9 @@ function FeedbackPage() {
       >
         <p>Check In</p>
       </div>
+      </Link>
+
+      <Link href="/feedback/helpdesk/1">
       <div
         className="feedback-page-elements-div-2"
         style={{
@@ -32,6 +37,9 @@ function FeedbackPage() {
       >
         <p>Help Desk</p>
       </div>
+      </Link>
+
+      <Link href="/feedback/airline/1">
       <div
         className="feedback-page-elements-div-1"
         style={{
@@ -40,6 +48,9 @@ function FeedbackPage() {
       >
         <p>Airline</p>
       </div>
+      </Link>
+
+      <Link href="/feedback/lounge/1">
       <div
         className="feedback-page-elements-div-1"
         style={{
@@ -48,6 +59,9 @@ function FeedbackPage() {
       >
         <p>Lounge</p>
       </div>
+      </Link>  
+
+      <Link href="/feedback/store/1"> 
       <div
         className="feedback-page-elements-div-1"
         style={{
@@ -56,6 +70,9 @@ function FeedbackPage() {
       >
         <p>Store</p>
       </div>
+      </Link>
+
+      <Link href="/feedback/washroom/1">
       <div
         className="feedback-page-elements-div-1"
         style={{
@@ -64,6 +81,7 @@ function FeedbackPage() {
       >
         <p>Washroom</p>
       </div>
+      </Link>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "./HomePage.css";
 import { Context } from "../../App";
 import { useNavigate } from "react-router-dom";
-// import FlightDetailsPage from '../FlightDetailsPage/FlightDetailsPage'
+import FlightDetailsPage from '../FlightDetailsPage/FlightDetailsPage'
 
 function HomePage() {
   const navigate = useNavigate();
@@ -21,9 +21,9 @@ function HomePage() {
       <div>
         <img src="/Images/pexels-martin-dickson-2366581.jpg" alt="home"></img>
       </div>
-      {/* {
+      {
         loggedInDetails.userType==="user" && <FlightDetailsPage/>
-      } */}
+      }
     </div>
   );
 }
