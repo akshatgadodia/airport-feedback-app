@@ -20,7 +20,7 @@ const getAdmin = asyncHandler(async (req, res, next) => {
       data: admin,
     });
   } else {
-    return next(new ErrorResponse("Invalid Login Details", 404));
+    return next(new ErrorResponse("Invalid Login Details", 401));
   }
 });
 

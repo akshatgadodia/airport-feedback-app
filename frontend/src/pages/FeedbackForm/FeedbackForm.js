@@ -62,7 +62,7 @@ const FeedbackForm = () => {
       });*/
       setRating(0);
       setFeedbackData({ ...feedbackData, feedbackMessage: "NA" });
-      return null;
+      // return null;
     }
     if (data.next) {
       navigate(`/feedback/${feedbackType}/${data.next}`);
