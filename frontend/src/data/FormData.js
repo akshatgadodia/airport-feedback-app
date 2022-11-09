@@ -2,16 +2,16 @@ const FormData = {
   foodcourt: {
     1: { q: "Service", next: 2, ref: "service", ratingType: "stars" },
     2: { q: "Staff", next: 3, ref: "staff", ratingType: "stars" },
-    3: { q: "FoodQuality", next: 4, ref: "foodQuality", ratingType: "stars" },
+    3: { q: "Food Quality", next: 4, ref: "foodQuality", ratingType: "stars" },
     4: {
-      q: "ValueForMoney",
+      q: "Value For Money",
       next: 5,
       ref: "valueForMoney",
       ratingType: "stars",
     },
     5: { q: "Cleanliness", next: 6, ref: "cleanliness", ratingType: "stars" },
     6: { q: "Rating", next: 7, ref: "rating", ratingType: "stars" },
-    7: { q: "FeedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    7: { q: "Feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
   airline: {
     1: { q: "Name of Airline", next: 2, ref: "name", ratingType: "dropdown" },
@@ -24,13 +24,13 @@ const FormData = {
     },
     4: { q: "Service", next: 5, ref: "service", ratingType: "stars" },
     5: { q: "Staff", next: 6, ref: "staff", ratingType: "stars" },
-    6: { q: "FeedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    6: { q: "Feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
   checkin: {
     1: { q: "Service", next: 2, ref: "service", ratingType: "stars" },
     2: { q: "Rating", next: 3, ref: "rating", ratingType: "stars" },
     3: { q: "Staff", next: 4, ref: "staff", ratingType: "stars" },
-    4: { q: "FeedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    4: { q: "Feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
   helpdesk: {
     1: { q: "Rating", next: 2, ref: "rating", ratingType: "stars" },
@@ -41,7 +41,7 @@ const FormData = {
       ratingType: "stars",
     },
     3: { q: "Behaviour of Staff", next: 4, ref: "staff", ratingType: "stars" },
-    4: { q: "FeedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    4: { q: "Feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
   lounge: {
     1: { q: "Lounge Name", next: 2, ref: "name", ratingType: "dropdown" },
@@ -55,7 +55,7 @@ const FormData = {
     4: { q: "Food", next: 5, ref: "food", ratingType: "stars" },
     5: { q: "Service", next: 6, ref: "service", ratingType: "stars" },
     6: { q: "Staff", next: 7, ref: "staff", ratingType: "stars" },
-    7: { q: "FeedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    7: { q: "Feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
   store: {
     1: { q: "name", next: 2, ref: "name", ratingType: "dropdown" },
@@ -69,29 +69,29 @@ const FormData = {
     4: { q: "service", next: 5, ref: "service", ratingType: "stars" },
     5: { q: "staff", next: 6, ref: "staff", ratingType: "stars" },
     6: {
-      q: "valueForMoney",
+      q: "value For Money",
       next: 7,
       ref: "valueForMoney",
       ratingType: "stars",
     },
     7: {
-      q: "productQuality",
+      q: "product Quality",
       next: 8,
       ref: "productQuality",
       ratingType: "stars",
     },
-    8: { q: "feedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    8: { q: "feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
   washroom: {
     1: { q: "rating", next: 2, ref: "rating", ratingType: "stars" },
     2: { q: "cleanliness", next: 3, ref: "cleanliness", ratingType: "stars" },
     3: {
-      q: "availabilityOfToiletries",
+      q: "availability Of Toiletries",
       next: 4,
       ref: "availabilityOfToiletries",
       ratingType: "stars",
     },
-    4: { q: "feedbackMessage", ref: "feedbackMessage", ratingType: "text" },
+    4: { q: "feedback Message", ref: "feedbackMessage", ratingType: "text" },
   },
 };
 

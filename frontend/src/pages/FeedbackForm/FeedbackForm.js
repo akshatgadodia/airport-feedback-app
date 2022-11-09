@@ -85,36 +85,38 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="feedbackdiv" style={{
-      backgroundImage: `url('/Images/FeedbackPage/${feedbackType}.jpg')`,
-    }}>
-      <h1>{feedbackType.toUpperCase()}</h1>
+    <div
+      className="feedbackdiv"
+      style={{
+        backgroundImage: `url('/Images/FeedbackPage/${feedbackType}.jpg')`,
+      }}
+    >
       <div className="Qdiv">
-        <div>
-          <div>{data.q}</div>
+        <div className="Qdiv-header">
+          <h1>{feedbackType.toUpperCase()}</h1>
+        </div>
+        <div className="rating-div">
+          <p>{data.q.toUpperCase()}</p>
           {data.ratingType === "stars" && (
             <Rating
               onClick={ratingChanged}
               initialValue={rating}
-              transition={true}
-              allowFraction={true}
+              transition
+              allowFraction
             />
           )}
           {data.ratingType === "text" && (
-            <textarea
-              onChange={(e) => textValueChangedHandler(e)}
-              width="fit-content"
-              height="fit-content"
-            />
+            <textarea onChange={(e) => textValueChangedHandler(e)} />
           )}
           {data.ratingType === "dropdown" && (
             <select onChange={(e) => textValueChangedHandler(e)}>
-              <option> Choose {feedbackType} </option>
+              <option className="dropdown-option"> Choose {feedbackType} </option>
               {dropdownData &&
                 dropdownData.map((type, idx) => (
-                  <option key={idx}>{type.name}</option>
+                  <option className="dropdown-option" key={idx}>{type.name}</option>
                 ))}
             </select>
+            
           )}
         </div>
         <input

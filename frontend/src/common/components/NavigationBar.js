@@ -29,7 +29,7 @@ const NavigationBar = () => {
       <Container>
         <Navbar.Brand href="/home">
           <div className="navbar-logo-div">
-            <img src="Images/airline-logo.png" height={50} alt="" />
+            <img src="/Images/airline-logo.png" className="logo-image" alt="" />
             <p>SKIT INTERNATIONAL AIRPORT</p>
           </div>
         </Navbar.Brand>
