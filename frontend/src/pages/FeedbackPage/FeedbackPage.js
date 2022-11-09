@@ -7,24 +7,12 @@ function FeedbackPage() {
   const navigate = useNavigate();
   const { loggedInDetails, user } = useContext(Context);
 
-  function onLinkClick(type) {
-    if (loggedInDetails.userType === "user" || user.type === "user")
-      navigate(`/feedback/${type}/1`);
-    else if (loggedInDetails.userType === "admin" || user.type === "admin") {
-      navigate(`/adminFeedback/${type}`);
-    }
-  }
-
   return (
     <div className="feedback-page-main-div">
       <div style={{ flex: 1 }} className="feedback-page-container-div">
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/foodcourt/1" : "/adminFeedback/foodcourt"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("foodcourt");
-          }}
         >
           <div
             className="feedback-page-elements-div"
@@ -36,13 +24,25 @@ function FeedbackPage() {
           </div>
         </a>
 
+
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/foodcourt/1" : "/adminFeedback/foodcourt"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("checkin");
-          }}
+        >
+          <div
+            className="feedback-page-elements-div"
+            style={{
+              backgroundImage: "url('Images/FeedbackPage/food-court.jpg')",
+            }}
+          >
+            <div className="elements-title">Food Court</div>
+          </div>
+        </a>
+
+
+        <a
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/checkin/1" : "/adminFeedback/checkin"}
+          style={{ flex: 1 }}
         >
           <div
             className="feedback-page-elements-div"
@@ -55,12 +55,8 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/helpdesk/1" : "/adminFeedback/helpdesk"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("helpdesk");
-          }}
         >
           <div
             className="feedback-page-elements-div"
@@ -75,12 +71,8 @@ function FeedbackPage() {
 
       <div style={{ flex: 1 }} className="feedback-page-container-div">
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/airline/1" : "/adminFeedback/airline"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("airline");
-          }}
         >
           <div
             className="feedback-page-elements-div"
@@ -93,12 +85,8 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/lounge/1" : "/adminFeedback/lounge"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("lounge");
-          }}
         >
           <div
             className="feedback-page-elements-div"
@@ -111,12 +99,8 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/store/1" : "/adminFeedback/store"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("store");
-          }}
         >
           <div
             className="feedback-page-elements-div"
@@ -129,12 +113,8 @@ function FeedbackPage() {
         </a>
 
         <a
-          href="/"
+          href={(loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/washroom/1" : "/adminFeedback/washroom"}
           style={{ flex: 1 }}
-          onClick={(e) => {
-            e.preventDefault();
-            onLinkClick("washroom");
-          }}
         >
           <div
             className="feedback-page-elements-div"

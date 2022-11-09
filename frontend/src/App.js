@@ -10,7 +10,7 @@ import NavigationBar from "./common/components/NavigationBar";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 import FeedbackForm from "./pages/FeedbackForm/FeedbackForm";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
-import AdminRegister from "./pages/AdminRegister/AdminRegister";
+// import AdminRegister from "./pages/AdminRegister/AdminRegister";
 import AdminFeedback from "./pages/AdminFeedback/AdminFeedback";
 
 export const Context = React.createContext();
@@ -39,7 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<UserLogin />} />
           <Route path="/admin-signin" element={<AdminLogin />} />
-          <Route path="/admin-signup" element={<AdminRegister />} />
+          {/* <Route path="/admin-signup" element={<AdminRegister />} /> */}
           <Route
             path="/adminFeedback/:feedbackType"
             element={<AdminFeedback />}

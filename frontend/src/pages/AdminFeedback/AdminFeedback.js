@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { List, Collapse } from "antd";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../hooks/useHttpClient";
+import { Tabs } from "antd";
 import FeedbackDataDisplayCard from "../../common/components/FeedbackDataDisplayCard";
 
 const AdminFeedback = () => {
@@ -96,13 +97,10 @@ const AdminFeedback = () => {
           </Collapse>
         </>
       ) : (
-        <>
-          {feedback.map((type) => {
+        <Tabs centered defaultActiveKey="1">
+          {feedback.map((type, idx) => {
             return (
-              <div className="admin-feedback-page-dropdown-display">
-                <h1 className="admin-feedback-page-dropdown-display-title">
-                  {type[0]}
-                </h1>
+              <Tabs.TabPane tab={type[0]} key={idx}>
                 <div className="admin-feedback-page-display">
                   {Object.entries(type[1]).map((feild, idx) => {
                     //console.log(feild)
@@ -138,10 +136,10 @@ const AdminFeedback = () => {
                   </Panel>
                 </Collapse>
                 {(messages = [])}
-              </div>
+              </Tabs.TabPane>
             );
           })}
-        </>
+        </Tabs>
       )}
     </div>
   );

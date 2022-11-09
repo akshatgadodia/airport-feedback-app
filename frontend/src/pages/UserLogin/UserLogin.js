@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./UserLogin.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
@@ -111,9 +111,9 @@ const UserLogin = () => {
             />
             </div>
             <input type="submit" value="Submit" className="login-form-submit" />
-            <Link to="/admin-signin" className="other-login">
+            <a href="/admin-signin" className="other-login">
               Are you an admin? Click to Login
-            </Link>
+            </a>
           </form>
         </div>
       </div>
