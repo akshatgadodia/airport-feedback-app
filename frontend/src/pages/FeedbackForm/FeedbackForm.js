@@ -14,7 +14,6 @@ const FeedbackForm = () => {
   const [feedbackData, setFeedbackData] = useState({});
   const [rating, setRating] = useState(0);
   const [dropdownData, setDropdownData] = useState([]);
-
   useEffect(() => {
     const fetchDropdownData = async () => {
       const type = await sendRequest(`/${feedbackType}s/`);
@@ -86,7 +85,9 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="feedbackdiv">
+    <div className="feedbackdiv" style={{
+      backgroundImage: `url('/Images/FeedbackPage/${feedbackType}.jpg')`,
+    }}>
       <h1>{feedbackType.toUpperCase()}</h1>
       <div className="Qdiv">
         <div>

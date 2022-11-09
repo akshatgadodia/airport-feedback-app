@@ -17,7 +17,7 @@ function FeedbackPage() {
           <div
             className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/food-court.jpg')",
+              backgroundImage: "url('Images/FeedbackPage/foodcourt.jpg')",
             }}
           >
             <div className="elements-title">Food Court</div>
@@ -32,7 +32,7 @@ function FeedbackPage() {
           <div
             className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/food-court.jpg')",
+              backgroundImage: "url('Images/FeedbackPage/foodcourt.jpg')",
             }}
           >
             <div className="elements-title">Food Court</div>
@@ -47,7 +47,7 @@ function FeedbackPage() {
           <div
             className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/check-in.jpg')",
+              backgroundImage: "url('Images/FeedbackPage/checkin.jpg')",
             }}
           >
             <div className="elements-title">Check In</div>
@@ -61,7 +61,7 @@ function FeedbackPage() {
           <div
             className="feedback-page-elements-div"
             style={{
-              backgroundImage: "url('Images/FeedbackPage/help-desk.jpeg')",
+              backgroundImage: "url('Images/FeedbackPage/helpdesk.jpg')",
             }}
           >
             <div className="elements-title">Help Desk</div>

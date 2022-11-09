@@ -1,0 +1,44 @@
+.about {
+    width: 100%;
+    height : calc(100vh-70px);
+    padding: 10vh;
+    position: sticky;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .about-content p {
+    padding-top: 1vh;
+  }
+  .about-content h1 {
+    padding-bottom: 3vh !important;
+  }
+  .about-developed {
+    margin-top: 50px;
+  }
+  .about-developed h2 {
+    padding-bottom: 3vh;
+  }
+  .about-developed h3 {
+    padding-bottom: 1vh;
+  }
+  
+  .about-contact-information {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2vh;
+  }
+
+  
