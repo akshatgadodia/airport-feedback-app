@@ -40,12 +40,6 @@ const FeedbackDataDisplayCard = (props) => {
           </CircularProgressbarWithChildren>
         </div>
       </div>
-      <div className="feedback-data-display-div-text">
-        <h3>Average Rating</h3>
-        <h2>{averageRating}</h2>
-        <h3>Persons Rated</h3>
-        <h2>{personsRated}</h2>
-      </div>
     </div>
   );
 };
