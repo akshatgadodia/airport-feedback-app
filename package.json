@@ -1,0 +1,24 @@
+{
+  "name": "airport-feedback-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshatgadodia/airport-feedback-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshatgadodia/airport-feedback-app/issues"
+  },
+  "homepage": "https://github.com/akshatgadodia/airport-feedback-app#readme",
+  "engines": {
+    "node": "10.16.0"
+  }
+}
