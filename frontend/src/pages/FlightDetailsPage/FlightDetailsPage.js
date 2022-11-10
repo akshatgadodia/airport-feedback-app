@@ -73,9 +73,13 @@ const FlightDetailsPage = () => {
         className="flight-details-container"
         style={{ flexDirection: "row", justifyContent: "center", gap: "30px" }}
       >
-        <h1>{flightData.departureAirportName} </h1>
-        <FlightIcon className="flight-arrow" />
-        <h1>{flightData.arrivalAirportName}</h1>
+        <div className="flight-important-div">
+          <div className="flight-important">
+            <h1>{flightData.departureAirportName} </h1>
+            <FlightIcon className="flight-arrow" />
+            <h1>{flightData.arrivalAirportName}</h1>
+          </div>
+        </div>
       </div>
 
       <div className="flight-details-container">

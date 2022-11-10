@@ -36,7 +36,7 @@ const UserLogin = () => {
         }
       );
       if (!error) {
-        Swal.fire("Welcome to Airport", "", "success");
+        Swal.fire("Welcome to Airport" , "", "success");
         dispatch({
           type: "UserLogin",
           payload: {

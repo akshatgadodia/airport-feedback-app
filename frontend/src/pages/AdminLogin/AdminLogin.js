@@ -1,6 +1,6 @@
 import "./AdminLogin.css";
 import React, { useContext, useEffect, useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
@@ -35,7 +35,7 @@ const AdminLogin = () => {
       );
       console.log(data);
       if (!error) {
-        Swal.fire("Welcome to Airport", "", "success");
+        Swal.fire("Login Successful", "", "success");
         dispatch({
           type: "UserLogin",
           payload: { type: "admin", userName: data.data.name },
@@ -51,11 +51,11 @@ const AdminLogin = () => {
     <div
       className="login"
       style={{
-        backgroundImage: "url('Images/airport-1.jpg')"
+        backgroundImage: "url('Images/airport-1.jpg')",
       }}
     >
       <div className="login-inside-border">
-        <div className="login-form-div">
+        <div className="login-form-div" style={{ height: 400 }}>
           <div className="login-head">
             {["A", "D", "M", "I", "N"].map((letter, idx) => {
               return <TitleLetterDisplay key={idx} letter={letter} />;

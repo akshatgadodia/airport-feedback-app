@@ -16,10 +16,11 @@
   align-content: center;
 }
 
-.logo-image{
+.logo-image {
   height: 50px;
 }
 .navbar-logo-div p {
+  text-shadow: 3px 3px 3px #000000;
   font-size: 25px !important;
 }
 
@@ -29,4 +30,15 @@
   padding: 0;
   display: flex;
   align-items: center;
+}
+
+.nav-link {
+  color: #ffa40c !important;
+}
+.nav-link:hover {
+  color: #ce8300 !important;
+}
+
+.navbar-brand:hover {
+  color: white !important;
 }

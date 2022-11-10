@@ -21,10 +21,11 @@ function HomePage() {
           loggedInDetails.userType === "user"
             ? "url('Images/airport-2.jpg')"
             : "url('Images/airport-4.jpg')",
+
+        backgroundPosition:
+          loggedInDetails.userType === "user" ? "0 -100px" : "0 -200px",
       }}
     >
-      <h1>Welcome {loggedInDetails.userName}</h1>
-
       <div>{loggedInDetails.userType === "user" && <FlightDetailsPage />}</div>
     </div>
   );
