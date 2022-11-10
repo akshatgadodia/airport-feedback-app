@@ -1,6 +1,6 @@
 import "./AdminLogin.css";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
@@ -33,14 +33,14 @@ const AdminLogin = () => {
           "Content-Type": "application/json",
         }
       );
-      console.log(data);
+      //console.log(data);
       if (!error) {
         Swal.fire("Login Successful", "", "success");
         dispatch({
           type: "UserLogin",
-          payload: { type: "admin", userName: data.data.name },
+          payload: { type: "admin", userName: data.data.name, token: data.token, tokenExpiry:data.tokenExpiry },
         });
-        localStorage.setItem("UserName", JSON.stringify({ type: "admin" }));
+        localStorage.setItem("UserName", JSON.stringify({ type: "admin", token: data.token, userName: data.data.name, tokenExpiry:data.tokenExpiry }));
         setAdminDetails({});
         navigate("/home");
       }
@@ -84,9 +84,9 @@ const AdminLogin = () => {
               />
             </div>
             <input type="submit" value="Login" className="login-form-submit" />
-            <a href="/" className="other-login">
+            <Link to="/" className="other-login">
               Are you a passenger? Click to Login
-            </a>
+            </Link>
           </form>
         </div>
       </div>

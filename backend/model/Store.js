@@ -9,7 +9,7 @@ const storeFeedbackSchema = new Schema({
     staff : {type : Number, required : true,},
     valueForMoney : {type : Number, required : true,},
     productQuality : {type : Number, required : true,},
-    feedbackMessage : {type : String, required : true},
+    feedbackMessage : {type : String, required : true, default:"NA"},
 });
 
 module.exports = new mongoose.model("storefeedback",storeFeedbackSchema);

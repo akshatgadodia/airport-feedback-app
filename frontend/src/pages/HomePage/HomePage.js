@@ -7,12 +7,6 @@ import FlightDetailsPage from "../FlightDetailsPage/FlightDetailsPage";
 function HomePage() {
   const navigate = useNavigate();
   const { loggedInDetails } = useContext(Context);
-  useEffect(() => {
-    //console.log(loggedInDetails.userType==="");
-    if (!loggedInDetails.userType) {
-      navigate("/");
-    }
-  }, [loggedInDetails]);
   return (
     <div
       className="homepage-main-div"

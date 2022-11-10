@@ -53,16 +53,6 @@ const FeedbackForm = () => {
       });
       return null;
     }
-    if (data.ratingType === "text" && !feedbackData.feedbackMessage) {
-      /*Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `Please enter a message, if not enter NA`,
-      });*/
-      setRating(0);
-      setFeedbackData({ ...feedbackData, feedbackMessage: "NA" });
-      // return null;
-    }
     if (data.next) {
       navigate(`/feedback/${feedbackType}/${data.next}`);
     } else {

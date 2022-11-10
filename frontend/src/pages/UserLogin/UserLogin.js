@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./UserLogin.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
@@ -15,8 +15,8 @@ const UserLogin = () => {
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
   };
   useEffect(() => {
-    console.log(!{});
-    console.log(loggedInDetails.userType !== "");
+    //console.log(!{});
+    //console.log(loggedInDetails.userType !== "");
     if (loggedInDetails.userType) {
       navigate("/home");
     }
@@ -52,6 +52,7 @@ const UserLogin = () => {
             type: "user",
             flightNumber: data.data.flightNumber,
             gate: data.data.gate,
+            userName: userDetails.name
           })
         );
         setUserDetails({});
@@ -111,9 +112,9 @@ const UserLogin = () => {
             />
             </div>
             <input type="submit" value="Submit" className="login-form-submit" />
-            <a href="/admin-signin" className="other-login">
+            <Link to="/admin-signin" className="other-login">
               Are you an admin? Click to Login
-            </a>
+            </Link>
           </form>
         </div>
       </div>

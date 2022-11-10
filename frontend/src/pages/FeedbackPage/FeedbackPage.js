@@ -16,6 +16,10 @@ function FeedbackPage() {
               ? "/feedback/foodcourt/1"
               : "/adminFeedback/foodcourt"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/foodcourt/1": "/adminFeedback/foodcourt")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -34,6 +38,10 @@ function FeedbackPage() {
               ? "/feedback/foodcourt/1"
               : "/adminFeedback/foodcourt"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/foodcourt/1": "/adminFeedback/foodcourt")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -52,6 +60,10 @@ function FeedbackPage() {
               ? "/feedback/checkin/1"
               : "/adminFeedback/checkin"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/checkin/1": "/adminFeedback/checkin")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -70,6 +82,10 @@ function FeedbackPage() {
               ? "/feedback/helpdesk/1"
               : "/adminFeedback/helpdesk"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/helpdesk/1": "/adminFeedback/helpdesk")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -90,6 +106,10 @@ function FeedbackPage() {
               ? "/feedback/airline/1"
               : "/adminFeedback/airline"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/airline/1": "/adminFeedback/airline")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -108,6 +128,10 @@ function FeedbackPage() {
               ? "/feedback/lounge/1"
               : "/adminFeedback/lounge"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/lounge/1": "/adminFeedback/lounge")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -126,6 +150,10 @@ function FeedbackPage() {
               ? "/feedback/store/1"
               : "/adminFeedback/store"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/store/1": "/adminFeedback/store")
+          }}
           style={{ flex: 1 }}
         >
           <div
@@ -144,6 +172,10 @@ function FeedbackPage() {
               ? "/feedback/washroom/1"
               : "/adminFeedback/washroom"
           }
+          onClick={(e)=>{
+            e.preventDefault(); 
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/washroom/1" : "/adminFeedback/washroom")
+          }}
           style={{ flex: 1 }}
         >
           <div

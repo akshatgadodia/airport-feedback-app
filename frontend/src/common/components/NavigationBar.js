@@ -10,10 +10,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const NavigationBar = () => {
   const { loggedInDetails, dispatch } = useContext(Context);
   const navigate = useNavigate();
-  console.log(loggedInDetails);
   const LogoutHandler = () => {
-    localStorage.removeItem("UserName");
-    navigate("/");
+    window.location.pathname = '/'
     dispatch({
       type: "UserLogout",
     });
@@ -27,7 +25,7 @@ const NavigationBar = () => {
       className={loggedInDetails.userType ? "navbar" : "navbar-hidden"}
     >
       <Container>
-        <Navbar.Brand href="/home">
+        <Navbar.Brand to="/home" onClick={(e)=>{e.preventDefault();navigate("/home")}}>
           <div className="navbar-logo-div">
             <img src="/Images/airline-logo.png" className="logo-image" alt="" />
             <p>SKIT INTERNATIONAL AIRPORT</p>
@@ -36,13 +34,13 @@ const NavigationBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link eventKey="home" href="/home">
+            <Nav.Link eventKey="home" href="/home"  onClick={(e)=>{e.preventDefault();navigate("/home")}}>
               <p>HOME</p>
             </Nav.Link>
-            <Nav.Link eventKey="feedback" href="/feedback">
+            <Nav.Link eventKey="feedback" href="/feedback"  onClick={(e)=>{e.preventDefault();navigate("/feedback")}}>
               <p>FEEDBACK</p>
             </Nav.Link>
-            <Nav.Link eventKey="about" href="/about">
+            <Nav.Link eventKey="about" href="/about"  onClick={(e)=>{e.preventDefault();navigate("/about")}}>
               <p>ABOUT</p>
             </Nav.Link>
           </Nav>

@@ -1,13 +1,15 @@
 import "./AdminFeedback.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { List, Collapse } from "antd";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../hooks/useHttpClient";
 import { Tabs } from "antd";
 import FeedbackDataDisplayCard from "../../common/components/FeedbackDataDisplayCard";
-
+import { Context } from "../../App";
 const AdminFeedback = () => {
+  const { loggedInDetails } = useContext(Context);
   const { Panel } = Collapse;
+
   const { sendRequest } = useHttpClient();
   const { feedbackType } = useParams();
   const [feedback, setFeedback] = useState([]);
@@ -22,7 +24,10 @@ const AdminFeedback = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const fetchedData = await sendRequest(`/${feedbackType}/`);
+      //console.log("loggedInDetails",loggedInDetails)
+      const fetchedData = await sendRequest(`/${feedbackType}/`,"GET",null,{
+        Authorization : 'Bearer ' + loggedInDetails.token
+      });
       if (["airline", "lounge", "store"].includes(feedbackType)) {
         const typeOfFeedback = {};
         fetchedData.data.map((obj) => {
