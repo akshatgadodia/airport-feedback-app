@@ -7,9 +7,15 @@ Airport Feedback App collects feedback forms of customer's satisfaction/grievanc
 ## Username : a@gmail.com
 ## Password : z
 
+# Credentials for passenger
+## Name : Your Name
+## Email : Your Email
+## Mobile Number : Your Mobile Number
+## PNR : 12345467890 || 8450123694 || 2145803697 || 8514723694 || 1458726954
+
 # Run App on Local Machine
-cd into backend and do "npm run server"
-cd into frontend and do "npm start"
+## cd into backend and do "npm run server"
+## cd into frontend and do "npm start"
 
 # Contributors
 ## Akshat Gadodia
