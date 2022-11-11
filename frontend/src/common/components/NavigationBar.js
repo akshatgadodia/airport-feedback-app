@@ -8,9 +8,10 @@ import Navbar from "react-bootstrap/Navbar";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const NavigationBar = () => {
-  const { loggedInDetails, dispatch } = useContext(Context);
+  const { loggedInDetails, dispatch, setUser } = useContext(Context);
   const navigate = useNavigate();
   const LogoutHandler = () => {
+    setUser({})
     window.location.pathname = '/'
     dispatch({
       type: "UserLogout",

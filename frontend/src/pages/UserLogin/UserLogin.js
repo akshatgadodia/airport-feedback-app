@@ -5,12 +5,13 @@ import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
 import { useHttpClient } from "../../hooks/useHttpClient";
-
 const UserLogin = () => {
   const { error, sendRequest } = useHttpClient();
   const [userDetails, setUserDetails] = useState();
+
   const navigate = useNavigate();
-  const { loggedInDetails, dispatch } = useContext(Context);
+  
+  const { loggedInDetails, dispatch, setUser } = useContext(Context);
   const onChangeHandler = (e) => {
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
   };
@@ -46,6 +47,7 @@ const UserLogin = () => {
             userName: userDetails.name,
           },
         });
+        setUser({type:"user"})
         localStorage.setItem(
           "UserName",
           JSON.stringify({

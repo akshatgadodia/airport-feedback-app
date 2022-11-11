@@ -9,25 +9,23 @@ import { Context } from "../../App";
 const AdminFeedback = () => {
   const { loggedInDetails } = useContext(Context);
   const { Panel } = Collapse;
-
   const { sendRequest } = useHttpClient();
   const { feedbackType } = useParams();
   const [feedback, setFeedback] = useState([]);
   const [feedbackMessages, setFeedbackMessages] = useState([]);
   const [dropdownRequired, setDropdownRequired] = useState(false);
   let messages = [];
+
   useEffect(() => {
+    const loginData = JSON.parse(localStorage.getItem("UserName"));
     if (["airline", "lounge", "store"].includes(feedbackType)) {
       setDropdownRequired(true);
     }
-  }, []);
-
-  useEffect(() => {
     const getData = async () => {
-      //console.log("loggedInDetails",loggedInDetails)
       const fetchedData = await sendRequest(`/${feedbackType}/`,"GET",null,{
-        Authorization : 'Bearer ' + loggedInDetails.token
+        Authorization : 'Bearer ' + loginData.token || loggedInDetails.token
       });
+      console.log("Fetched Data")
       if (["airline", "lounge", "store"].includes(feedbackType)) {
         const typeOfFeedback = {};
         fetchedData.data.map((obj) => {

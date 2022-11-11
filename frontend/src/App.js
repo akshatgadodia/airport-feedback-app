@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect, useReducer } from "react";
 import { reducer, initialLoggedInDetails } from "./utils/Reducer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import UserLogin from "./pages/UserLogin/UserLogin";
 import HomePage from "./pages/HomePage/HomePage";
@@ -31,6 +31,10 @@ function App() {
           const currentDate = new Date();
           if (currentDate - date >= 0) {
             localStorage.removeItem("UserName");
+            window.location.pathname = '/'
+            dispatch({
+              type: "UserLogout",
+            });
             return null;
           }
           setUser(loginData);
@@ -49,34 +53,21 @@ function App() {
       <Context.Provider value={{ loggedInDetails, dispatch, user, setUser }}>
         <NavigationBar />
         <Routes>
-          {/* <Route path="/" element={(user.type==="user" || user.type==="admin") ? <HomePage/> : <UserLogin />} />
-          <Route path="/admin-signin" element={(user.type==="user" || user.type==="admin") ? <HomePage/> : <AdminLogin />} />
-          <Route path="/about" element={(user.type==="user" || user.type==="admin") ? <AboutPage /> : <UserLogin/>} />
+          <Route path="/" element={(user.type) ? <Navigate replace to={"/home"} /> : <UserLogin />} />
+          <Route path="/admin-signin" element={(user.type) ?<Navigate replace to={"/home"}/> : <AdminLogin />} />
+          <Route path="/about" element={(user.type) ? <AboutPage /> : <Navigate replace to={"/"}/>} />
           <Route
             path="/adminFeedback/:feedbackType"
-            element={(user.type==="admin") ? <AdminFeedback /> : (user.type==="user") ? <HomePage/> : <UserLogin/>}
+            element={(user.type==="admin") ? <AdminFeedback /> : (user.type==="user") ? <Navigate replace to={"/home"}/> : <Navigate replace to={"/"}/>}
           />
-          <Route path="/home" element={(user.type==="user" || user.type==="admin") ? <HomePage /> : <UserLogin/>} />
+          <Route path="/home" element={(user.type) ? <HomePage /> : <Navigate replace to={"/"}/>} />
           <Route
             path="/feedback/:feedbackType/:question"
-            element={(user.type==="user") ? <FeedbackForm /> : (user.type==="admin") ? <HomePage/> : <UserLogin/>}
+            element={(user.type==="user") ? <FeedbackForm /> : (user.type==="admin") ? <Navigate replace to={"/home"}/> : <Navigate replace to={"/"}/>}
           />
-          <Route path="/feedback" element={(user.type==="user" || user.type==="admin") ? <FeedbackPage /> : <UserLogin/>} /> */}
-          <Route path="/" element={<UserLogin />} />
-          <Route path="/admin-signin" element={<AdminLogin />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route
-            path="/adminFeedback/:feedbackType"
-            element={<AdminFeedback />}
-          />
-          <Route path="/home" element={<HomePage />} />
-          <Route
-            path="/feedback/:feedbackType/:question"
-            element={<FeedbackForm />}
-          />
-          <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/feedback" element={(user.type) ? <FeedbackPage /> : <Navigate replace to={"/home"}/>} />
+          <Route path="*" element={<Navigate replace to={"/home"}/>}/>
         </Routes>
-        {/* <FooterComponent /> */}
       </Context.Provider>
     </BrowserRouter>
   );

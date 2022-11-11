@@ -10,7 +10,7 @@ const AdminLogin = () => {
   const { error, sendRequest } = useHttpClient();
   const [adminDetails, setAdminDetails] = useState();
   const navigate = useNavigate();
-  const { loggedInDetails, dispatch } = useContext(Context);
+  const { loggedInDetails, dispatch, setUser } = useContext(Context);
 
   const onChangeHandler = (e) => {
     setAdminDetails({ ...adminDetails, [e.target.id]: e.target.value });
@@ -40,6 +40,7 @@ const AdminLogin = () => {
           type: "UserLogin",
           payload: { type: "admin", userName: data.data.name, token: data.token, tokenExpiry:data.tokenExpiry },
         });
+        setUser({type:"admin"})
         localStorage.setItem("UserName", JSON.stringify({ type: "admin", token: data.token, userName: data.data.name, tokenExpiry:data.tokenExpiry }));
         setAdminDetails({});
         navigate("/home");
