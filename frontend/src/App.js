@@ -37,12 +37,12 @@ function App() {
             });
             return null;
           }
-          setUser(loginData);
+        }
+        setUser(loginData);
           dispatch({
             type: "UserLogin",
             payload: loginData
           });
-        }
       }
     };
     setData();

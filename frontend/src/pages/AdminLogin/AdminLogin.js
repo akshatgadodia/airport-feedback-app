@@ -15,11 +15,6 @@ const AdminLogin = () => {
   const onChangeHandler = (e) => {
     setAdminDetails({ ...adminDetails, [e.target.id]: e.target.value });
   };
-  useEffect(() => {
-    if (loggedInDetails.userType) {
-      navigate("/home");
-    }
-  }, [loggedInDetails]);
   const handleForm = async (event) => {
     event.preventDefault();
     // console.log(JSON.stringify(adminDetails));
