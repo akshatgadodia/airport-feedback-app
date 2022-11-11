@@ -11,7 +11,7 @@ const FeedbackDataDisplayCard = (props) => {
   const averageRating = props.averageRating.toFixed(1);
   const personsRated = props.personsRated;
   const maxPersons = averageRating * personsRated;
-  const title = props.title.toUpperCase();
+  const title = props.title.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase();})//props.title.toUpperCase();
   return (
     <div className="feedback-data-display">
       <div className="feedback-data-display-div">

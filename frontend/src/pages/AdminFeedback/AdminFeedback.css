@@ -48,3 +48,6 @@
     margin : 10px;
     border-radius: 10px;
 }
+.ant-collapse-content>.ant-collapse-content-box{
+    padding: 0 !important; 
+}

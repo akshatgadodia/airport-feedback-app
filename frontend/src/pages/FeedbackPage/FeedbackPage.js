@@ -40,7 +40,7 @@ function FeedbackPage() {
           }
           onClick={(e)=>{
             e.preventDefault(); 
-            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/foodcourt/1": "/adminFeedback/foodcourt")
+            navigate((loggedInDetails.userType === "user" || user.type === "user") ? "/feedback/baggage/1": "/adminFeedback/baggage")
           }}
           style={{ flex: 1 }}
         >

@@ -1,11 +1,12 @@
 import "./AdminFeedback.css";
 import React, { useEffect, useState, useContext } from "react";
-import { List, Collapse } from "antd";
+import { List, Collapse, message } from "antd";
 import { useParams } from "react-router-dom";
 import { useHttpClient } from "../../hooks/useHttpClient";
 import { Tabs } from "antd";
-import FeedbackDataDisplayCard from "../../common/components/FeedbackDataDisplayCard";
+import FeedbackDataDisplayCard from "./components/FeedbackDataDisplayCard";
 import { Context } from "../../App";
+
 const AdminFeedback = () => {
   const { loggedInDetails } = useContext(Context);
   const { Panel } = Collapse;
@@ -25,7 +26,7 @@ const AdminFeedback = () => {
       const fetchedData = await sendRequest(`/${feedbackType}/`,"GET",null,{
         Authorization : 'Bearer ' + loginData.token || loggedInDetails.token
       });
-      console.log("Fetched Data")
+      //console.log("Fetched Data")
       if (["airline", "lounge", "store"].includes(feedbackType)) {
         const typeOfFeedback = {};
         fetchedData.data.map((obj) => {
@@ -84,7 +85,7 @@ const AdminFeedback = () => {
               }
             })}
           </div>
-          <Collapse accordion className="admin-feedback-page-accordion">
+          <Collapse expandIcon={false} accordion expandIconPosition="end" className="admin-feedback-page-accordion">
             <Panel
               header="Feedback Messages"
               key="1"
@@ -93,7 +94,7 @@ const AdminFeedback = () => {
               <List
                 className="admin-feedback-page-list"
                 bordered
-                dataSource={feedbackMessages}
+                dataSource={feedbackMessages.filter((message)=>{return message!=="NA"})}
                 renderItem={(item) => <List.Item>{item}</List.Item>}
               />
             </Panel>
@@ -123,17 +124,17 @@ const AdminFeedback = () => {
                       );
                   })}
                 </div>
-                <Collapse accordion className="admin-feedback-page-accordion">
+                <Collapse expandIcon={false} accordion expandIconPosition="end" className="admin-feedback-page-accordion">
                   <Panel
                     header="Feedback Messages"
                     key="1"
                     className="admin-feedback-page-panel"
                   >
                     <List
-                      key="x"
+                      key="list"
                       className="admin-feedback-page-list"
                       bordered
-                      dataSource={messages}
+                      dataSource={messages.filter((message)=>{return message!=="NA"})}
                       renderItem={(item) => <List.Item>{item}</List.Item>}
                     />
                   </Panel>

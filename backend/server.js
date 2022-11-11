@@ -17,6 +17,7 @@ const washroomRoutes = require('./routes/washroomRoute');
 const airlinesRoutes = require('./routes/airlinesRoute')
 const storesRoutes = require('./routes/storesRoute')
 const loungesRoutes = require('./routes/loungesRoute')
+const baggageRoutes = require('./routes/baggageRoute')
 
 connectDb();
 
@@ -45,6 +46,7 @@ app.use('/api/washroom',washroomRoutes)
 app.use('/api/airlines',airlinesRoutes)
 app.use('/api/lounges',loungesRoutes)
 app.use('/api/stores',storesRoutes)
+app.use('/api/baggage',baggageRoutes)
 
 
 // Error Handler
