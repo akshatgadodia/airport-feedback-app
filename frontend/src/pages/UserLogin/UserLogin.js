@@ -14,14 +14,7 @@ const UserLogin = () => {
   const { loggedInDetails, dispatch, setUser } = useContext(Context);
   const onChangeHandler = (e) => {
     setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
-  };
-  useEffect(() => {
-    //console.log(!{});
-    //console.log(loggedInDetails.userType !== "");
-    if (loggedInDetails.userType) {
-      navigate("/home");
-    }
-  }, [loggedInDetails]);
+  };  
 
   const handleForm = async (event) => {
     event.preventDefault();
