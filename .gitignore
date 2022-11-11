@@ -12,10 +12,10 @@ backend/.pnp.js
 
 
 # production
-frontend/build
 backend/build
 
 # misc
+.env
 frontend/.DS_Store
 backend/.DS_Store
 frontend/.env.local

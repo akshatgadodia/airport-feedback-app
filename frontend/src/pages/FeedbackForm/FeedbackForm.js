@@ -16,7 +16,7 @@ const FeedbackForm = () => {
   const [dropdownData, setDropdownData] = useState([]);
   useEffect(() => {
     const fetchDropdownData = async () => {
-      const type = await sendRequest(`/${feedbackType}s/`);
+      const type = await sendRequest(`/api/${feedbackType}s/`);
       setDropdownData(type.data);
     };
     if (data.ratingType === "dropdown") fetchDropdownData();
@@ -59,7 +59,7 @@ const FeedbackForm = () => {
       // console.log(feedbackData);
       try {
         await sendRequest(
-          `/${feedbackType}/`,
+          `/api/${feedbackType}/`,
           "POST",
           JSON.stringify(feedbackData),
           {

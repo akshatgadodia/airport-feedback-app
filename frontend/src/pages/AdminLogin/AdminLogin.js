@@ -25,7 +25,7 @@ const AdminLogin = () => {
     // console.log(JSON.stringify(adminDetails));
     try {
       const data = await sendRequest(
-        "/admin/signin",
+        "/api/admin/signin",
         "POST",
         JSON.stringify(adminDetails),
         {

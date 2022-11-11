@@ -1,4 +1,7 @@
-require('dotenv').config();
+const path = require('path');
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path: __dirname+'/.env'});
+}
 const express = require('express');
 const cors = require('cors');
 const connectDb = require('./config/db')
@@ -48,6 +51,13 @@ app.use('/api/lounges',loungesRoutes)
 app.use('/api/stores',storesRoutes)
 app.use('/api/baggage',baggageRoutes)
 
+// static files (build of your frontend)
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend', 'build')));
+    app.get('/*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../frontend', 'build', 'index.html'));
+    })
+}
 
 // Error Handler
 app.use(errorHandler)

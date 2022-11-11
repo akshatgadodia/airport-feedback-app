@@ -49,7 +49,7 @@ function App() {
   }, []);
   return (
     
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <Context.Provider value={{ loggedInDetails, dispatch, user, setUser }}>
         <NavigationBar />
         <Routes>

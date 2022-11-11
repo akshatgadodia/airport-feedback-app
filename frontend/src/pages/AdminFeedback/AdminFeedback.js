@@ -23,7 +23,7 @@ const AdminFeedback = () => {
       setDropdownRequired(true);
     }
     const getData = async () => {
-      const fetchedData = await sendRequest(`/${feedbackType}/`,"GET",null,{
+      const fetchedData = await sendRequest(`/api/${feedbackType}/`,"GET",null,{
         Authorization : 'Bearer ' + loginData.token || loggedInDetails.token
       });
       //console.log("Fetched Data")

@@ -28,7 +28,7 @@ const UserLogin = () => {
     //console.log(JSON.stringify(userDetails))
     try {
       const data = await sendRequest(
-        "/user",
+        "/api/user",
         "POST",
         JSON.stringify(userDetails),
         {
