@@ -11,6 +11,7 @@ import FeedbackForm from "./pages/FeedbackForm/FeedbackForm";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AdminFeedback from "./pages/AdminFeedback/AdminFeedback";
+import Loader from "./common/components/Loader";
 
 export const Context = React.createContext();
 
@@ -53,7 +54,7 @@ function App() {
       <Context.Provider value={{ loggedInDetails, dispatch, user, setUser }}>
         <NavigationBar />
         <Routes>
-          <Route path="/" element={(user.type) ? <Navigate replace to={"/home"} /> : <UserLogin />} />
+          <Route path="/" element={(user.type) ? <Navigate replace to={"/home"} /> : <UserLogin/>} />
           <Route path="/admin-signin" element={(user.type) ?<Navigate replace to={"/home"}/> : <AdminLogin />} />
           <Route path="/about" element={(user.type) ? <AboutPage /> : <Navigate replace to={"/"}/>} />
           <Route

@@ -5,9 +5,10 @@ import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
 import { useHttpClient } from "../../hooks/useHttpClient";
+import Loader from "../../common/components/Loader";
 
 const AdminLogin = () => {
-  const { error, sendRequest } = useHttpClient();
+  const { error, sendRequest,isLoading } = useHttpClient();
   const [adminDetails, setAdminDetails] = useState();
   const navigate = useNavigate();
   const { loggedInDetails, dispatch, setUser } = useContext(Context);
@@ -44,6 +45,8 @@ const AdminLogin = () => {
   };
 
   return (
+    <>
+    {isLoading? <Loader/>:
     <div
       className="login"
       style={{
@@ -86,7 +89,8 @@ const AdminLogin = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

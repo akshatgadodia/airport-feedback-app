@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import "./UserLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../App";
+import Loader from "../../common/components/Loader";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
 import Swal from "sweetalert2";
-import { useHttpClient } from "../../hooks/useHttpClient";
+import { useHttpClient} from "../../hooks/useHttpClient";
 const UserLogin = () => {
-  const { error, sendRequest } = useHttpClient();
+  const { error, sendRequest,isLoading } = useHttpClient();
   const [userDetails, setUserDetails] = useState();
 
   const navigate = useNavigate();
@@ -57,6 +58,8 @@ const UserLogin = () => {
   };
 
   return (
+    <>
+    {isLoading? <Loader/>:
     <div
       className="login"
       style={{
@@ -113,7 +116,8 @@ const UserLogin = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

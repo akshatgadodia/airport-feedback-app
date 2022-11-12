@@ -12,7 +12,7 @@ const NavigationBar = () => {
   const navigate = useNavigate();
   const LogoutHandler = () => {
     setUser({})
-    window.location.pathname = '/'
+    navigate("/")
     dispatch({
       type: "UserLogout",
     });
