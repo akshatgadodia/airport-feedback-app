@@ -6,11 +6,12 @@ import { useHttpClient } from "../../hooks/useHttpClient";
 import { Tabs } from "antd";
 import FeedbackDataDisplayCard from "./components/FeedbackDataDisplayCard";
 import { Context } from "../../App";
+import Loader from "../../common/components/Loader";
 
 const AdminFeedback = () => {
   const { loggedInDetails } = useContext(Context);
   const { Panel } = Collapse;
-  const { sendRequest } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient();
   const { feedbackType } = useParams();
   const [feedback, setFeedback] = useState([]);
   const [feedbackMessages, setFeedbackMessages] = useState([]);
@@ -65,6 +66,7 @@ const AdminFeedback = () => {
 
   return (
     <div className="admin-feedback-page">
+    {isLoading && <Loader/>}
       <h1 className="admin-feedback-page-title">
         {feedbackType.toUpperCase()}
       </h1>

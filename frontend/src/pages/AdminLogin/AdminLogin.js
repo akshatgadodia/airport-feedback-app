@@ -1,5 +1,5 @@
 import "./AdminLogin.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 import TitleLetterDisplay from "../../common/components/TitleLetterDisplay";
@@ -8,10 +8,10 @@ import { useHttpClient } from "../../hooks/useHttpClient";
 import Loader from "../../common/components/Loader";
 
 const AdminLogin = () => {
-  const { error, sendRequest,isLoading } = useHttpClient();
+  const { error, sendRequest, isLoading } = useHttpClient();
   const [adminDetails, setAdminDetails] = useState();
   const navigate = useNavigate();
-  const { loggedInDetails, dispatch, setUser } = useContext(Context);
+  const { dispatch, setUser } = useContext(Context);
 
   const onChangeHandler = (e) => {
     setAdminDetails({ ...adminDetails, [e.target.id]: e.target.value });
@@ -46,7 +46,7 @@ const AdminLogin = () => {
 
   return (
     <>
-    {isLoading? <Loader/>:
+    {isLoading && <Loader/>}
     <div
       className="login"
       style={{
@@ -89,7 +89,7 @@ const AdminLogin = () => {
           </form>
         </div>
       </div>
-    </div>}
+    </div>
     </>
   );
 };

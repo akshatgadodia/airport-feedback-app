@@ -5,9 +5,10 @@ import "./FeedbackForm.css";
 import { Rating } from "react-simple-star-rating";
 import { useHttpClient } from "../../hooks/useHttpClient";
 import Swal from "sweetalert2";
+import Loader from './../../common/components/Loader';
 
 const FeedbackForm = () => {
-  const { sendRequest } = useHttpClient();
+  const { isLoading,sendRequest } = useHttpClient();
   const { feedbackType, question } = useParams();
   const navigate = useNavigate();
   const data = FormsData[feedbackType][question];
@@ -81,6 +82,7 @@ const FeedbackForm = () => {
         backgroundImage: `url('/Images/FeedbackPage/${feedbackType}.jpg')`,
       }}
     >
+      {isLoading && <Loader/>}
       <div className="Qdiv">
         <div className="Qdiv-header">
           <h1>{feedbackType.toUpperCase()}</h1>
