@@ -29,7 +29,7 @@ const NavigationBar = () => {
         <Navbar.Brand to="/home" onClick={(e)=>{e.preventDefault();navigate("/home")}}>
           <div className="navbar-logo-div">
             <img src="/Images/airline-logo.png" className="logo-image" alt="" />
-            <p>SKIT INTERNATIONAL AIRPORT</p>
+            <p className="airportName">SKIT INTERNATIONAL AIRPORT</p>
           </div>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

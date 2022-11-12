@@ -2,7 +2,15 @@
     width: 100vw;
     height: 100vh;
     background-color:#3199DA;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 100%;
+}
+@media(max-width:400px){
+    .loading img{
+        width: 200px;
+        height: 200px;
+    }
+    
 }

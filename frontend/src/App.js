@@ -11,7 +11,7 @@ import FeedbackForm from "./pages/FeedbackForm/FeedbackForm";
 import AdminLogin from "./pages/AdminLogin/AdminLogin";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AdminFeedback from "./pages/AdminFeedback/AdminFeedback";
-import Loader from "./common/components/Loader";
+
 
 export const Context = React.createContext();
 
