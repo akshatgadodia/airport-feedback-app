@@ -11,6 +11,7 @@
     align-items: center;
     background-color: transparent;
     background-color: #3c171290;
+    z-index: 5000;
 }
 .wrapper{
     width:200px;

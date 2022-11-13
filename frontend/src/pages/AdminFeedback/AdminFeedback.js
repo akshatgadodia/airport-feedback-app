@@ -24,9 +24,14 @@ const AdminFeedback = () => {
       setDropdownRequired(true);
     }
     const getData = async () => {
-      const fetchedData = await sendRequest(`/api/${feedbackType}/`,"GET",null,{
-        Authorization : 'Bearer ' + loginData.token || loggedInDetails.token
-      });
+      const fetchedData = await sendRequest(
+        `/api/${feedbackType}/`,
+        "GET",
+        null,
+        {
+          Authorization: "Bearer " + loginData.token || loggedInDetails.token
+        }
+      );
       //console.log("Fetched Data")
       if (["airline", "lounge", "store"].includes(feedbackType)) {
         const typeOfFeedback = {};
@@ -66,86 +71,107 @@ const AdminFeedback = () => {
 
   return (
     <div className="admin-feedback-page">
-    {isLoading && <Loader/>}
-      <h1 className="admin-feedback-page-title">
-        {feedbackType.toUpperCase()}
-      </h1>
-      <h1 className="admin-feedback-page-subtitle">FEEDBACK SUMMARY REPORT</h1>
-      {!dropdownRequired ? (
-        <>
-          <div className="admin-feedback-page-display">
-            {feedback.map((feild, idx) => {
-              if (feild[0] !== "feedbackMessage") {
-                return (
-                  <FeedbackDataDisplayCard
-                    key={idx}
-                    title={feild[0]}
-                    averageRating={feild[1] / feedbackMessages.length}
-                    personsRated={feedbackMessages.length}
-                  />
-                );
-              }
-            })}
-          </div>
-          <Collapse expandIcon={false} accordion expandIconPosition="end" className="admin-feedback-page-accordion">
-            <Panel
-              header="Feedback Messages"
-              key="1"
-              className="admin-feedback-page-panel"
-            >
-              <List
-                className="admin-feedback-page-list"
-                bordered
-                dataSource={feedbackMessages.filter((message)=>{return message!=="NA"})}
-                renderItem={(item) => <List.Item>{item}</List.Item>}
-              />
-            </Panel>
-          </Collapse>
-        </>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <Tabs centered defaultActiveKey="1">
-          {feedback.map((type, idx) => {
-            return (
-              <Tabs.TabPane tab={type[0]} key={idx}>
-                <div className="admin-feedback-page-display">
-                  {Object.entries(type[1]).map((feild, idx) => {
-                    //console.log(feild)
-                    if (feild[0] === "feedbackMessage") {
-                      messages = feild[1];
-                    }
-                  })}
-                  {Object.entries(type[1]).map((feild, idx) => {
-                    if (feild[0] !== "feedbackMessage")
-                      return (
-                        <FeedbackDataDisplayCard
-                          key={idx}
-                          title={feild[0]}
-                          averageRating={feild[1] / messages.length}
-                          personsRated={messages.length}
+        <>
+          <h1 className="admin-feedback-page-title">
+            {feedbackType.toUpperCase()}
+          </h1>
+          <h1 className="admin-feedback-page-subtitle">
+            FEEDBACK SUMMARY REPORT
+          </h1>
+          {!dropdownRequired ? (
+            <>
+              <div className="admin-feedback-page-display">
+                {feedback.map((feild, idx) => {
+                  if (feild[0] !== "feedbackMessage") {
+                    return (
+                      <FeedbackDataDisplayCard
+                        key={idx}
+                        title={feild[0]}
+                        averageRating={feild[1] / feedbackMessages.length}
+                        personsRated={feedbackMessages.length}
+                      />
+                    );
+                  }
+                })}
+              </div>
+              <Collapse
+                expandIcon={false}
+                accordion
+                expandIconPosition="end"
+                className="admin-feedback-page-accordion"
+              >
+                <Panel
+                  header="Feedback Messages"
+                  key="1"
+                  className="admin-feedback-page-panel"
+                >
+                  <List
+                    className="admin-feedback-page-list"
+                    bordered
+                    dataSource={feedbackMessages.filter((message) => {
+                      return message !== "NA";
+                    })}
+                    renderItem={(item) => <List.Item>{item}</List.Item>}
+                  />
+                </Panel>
+              </Collapse>
+            </>
+          ) : (
+            <Tabs centered defaultActiveKey="1">
+              {feedback.map((type, idx) => {
+                return (
+                  <Tabs.TabPane tab={type[0]} key={idx}>
+                    <div className="admin-feedback-page-display">
+                      {Object.entries(type[1]).map((feild, idx) => {
+                        //console.log(feild)
+                        if (feild[0] === "feedbackMessage") {
+                          messages = feild[1];
+                        }
+                      })}
+                      {Object.entries(type[1]).map((feild, idx) => {
+                        if (feild[0] !== "feedbackMessage")
+                          return (
+                            <FeedbackDataDisplayCard
+                              key={idx}
+                              title={feild[0]}
+                              averageRating={feild[1] / messages.length}
+                              personsRated={messages.length}
+                            />
+                          );
+                      })}
+                    </div>
+                    <Collapse
+                      expandIcon={false}
+                      accordion
+                      expandIconPosition="end"
+                      className="admin-feedback-page-accordion"
+                    >
+                      <Panel
+                        header="Feedback Messages"
+                        key="1"
+                        className="admin-feedback-page-panel"
+                      >
+                        <List
+                          key="list"
+                          className="admin-feedback-page-list"
+                          bordered
+                          dataSource={messages.filter((message) => {
+                            return message !== "NA";
+                          })}
+                          renderItem={(item) => <List.Item>{item}</List.Item>}
                         />
-                      );
-                  })}
-                </div>
-                <Collapse expandIcon={false} accordion expandIconPosition="end" className="admin-feedback-page-accordion">
-                  <Panel
-                    header="Feedback Messages"
-                    key="1"
-                    className="admin-feedback-page-panel"
-                  >
-                    <List
-                      key="list"
-                      className="admin-feedback-page-list"
-                      bordered
-                      dataSource={messages.filter((message)=>{return message!=="NA"})}
-                      renderItem={(item) => <List.Item>{item}</List.Item>}
-                    />
-                  </Panel>
-                </Collapse>
-                {(messages = [])}
-              </Tabs.TabPane>
-            );
-          })}
-        </Tabs>
+                      </Panel>
+                    </Collapse>
+                    {(messages = [])}
+                  </Tabs.TabPane>
+                );
+              })}
+            </Tabs>
+          )}
+        </>
       )}
     </div>
   );
